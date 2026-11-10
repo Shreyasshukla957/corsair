@@ -1,9 +1,9 @@
 ---
 title: Webhooks
-description: "Gitlab incoming webhooks: event paths, payloads, and response data."
+description: "GitLab incoming webhooks: event paths, payloads, and response data."
 ---
 
-The Gitlab plugin handles incoming webhooks. Point your provider’s subscription URL at your Corsair HTTP handler (see [Overview](/plugins/gitlab/overview) for setup context and the exact URL shape).
+The GitLab plugin handles incoming webhooks. Point your provider’s subscription URL at your Corsair HTTP handler (see [Overview](/plugins/gitlab/overview) for setup context and the exact URL shape).
 
 <Info>
 **New to Corsair?** See [webhooks](/concepts/webhooks) and [hooks](/concepts/hooks).
@@ -574,7 +574,7 @@ A push event from GitLab (git push to repository)
 | `before` | `string` | No | — |
 | `after` | `string` | No | — |
 | `ref` | `string` | No | — |
-| `checkout_sha` | `string` | No | — |
+| `checkout_sha` | `string \| null` | No | — |
 | `user_id` | `number` | No | — |
 | `user_name` | `string` | No | — |
 | `user_username` | `string` | No | — |

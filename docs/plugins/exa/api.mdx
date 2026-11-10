@@ -84,9 +84,9 @@ await corsair.exa.api.contents.get({});
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `ids` | `string[]` | Yes | — |
-| `text` | `object` | No | — |
-| `highlights` | `object` | No | — |
-| `summary` | `object` | No | — |
+| `text` | `object \| boolean` | No | — |
+| `highlights` | `object \| boolean` | No | — |
+| `summary` | `object \| boolean` | No | — |
 
 <AccordionGroup>
 <Accordion title="text full type">
@@ -282,7 +282,7 @@ await corsair.exa.api.imports.create({});
 
 `imports.delete`
 
-Delete an existing import [DESTRUCTIVE]
+Delete an existing import
 
 **Risk:** `destructive`
 
@@ -784,7 +784,7 @@ await corsair.exa.api.websets.create({});
 
 `websets.delete`
 
-Delete a webset [DESTRUCTIVE]
+Delete a webset
 
 **Risk:** `destructive`
 

@@ -1,17 +1,19 @@
+import Link from 'next/link';
+
 import { ChevronIcon, PlusCorner } from '../icons';
 
 const FAQ_ITEMS = [
 	{
 		id: 'different-from-others',
 		question: 'How is this different from existing integration products?',
-		answer:
-			"Most are closed source. If they're missing an integration, you wait for them to add it. Corsair is open source. Add any integration yourself.",
+		answer: `Most are closed source. If they're missing an integration, you wait for them to add it. Corsair is open source. Add any integration yourself.
+
+			Also, with the SDK your users' credentials stay in your own database, encrypted with a key only you hold. Hub relays the connect flows and doesn't keep those tokens.`,
 	},
 	{
 		id: 'vibe-code',
 		question: 'Why not just vibe code integrations myself?',
-		answer:
-			'You can get 80% there fast. The other 20% (token refresh, webhook signature verification, API deprecations, rate limit handling, multi-tenant credential isolation) compounds into a maintenance burden that distracts from your actual product.',
+		answer: `You can get 80% there fast. The other 20% (token refresh, webhook signature verification, API deprecations, rate limit handling, multi-tenant credential isolation) compounds into a maintenance burden that distracts from your actual product. Corsair is an easy drop-in that takes away all of those headaches.`,
 	},
 	{
 		id: 'api-keys',
@@ -41,7 +43,8 @@ const FAQ_ITEMS = [
 		id: 'hosted-security',
 		question: 'Is the hosted version secure?',
 		answer:
-			"Credentials use envelope encryption. A key you control wraps per-tenant encryption keys, which wrap the actual secrets. Nothing stored in plaintext. Both keys are stored in separate places and you can't decrypt credentials without both.",
+			"Yes. Corsair Cloud runs on the open-source SDK and uses envelope encryption: every account's API keys, tokens and synced data are encrypted with their own key, and the keys that unlock them are held in AWS KMS and rotate automatically. If our database leaked, your keys and data would stay unreadable. One customer can't reach another's data, and every action your agent takes is checked against your link's mode.",
+		link: { href: '/security', label: 'Learn more about security' },
 	},
 ] as const;
 
@@ -87,6 +90,14 @@ export function FaqSection() {
 									<p className="text-[15px] leading-[1.65] text-[#1c1c1c99] md:text-base md:leading-[1.7]">
 										{item.answer}
 									</p>
+									{'link' in item ? (
+										<Link
+											href={item.link.href}
+											className="mt-3 inline-block text-[15px] font-medium text-[#4a38f5] no-underline hover:underline"
+										>
+											{item.link.label} →
+										</Link>
+									) : null}
 								</div>
 							</details>
 						))}

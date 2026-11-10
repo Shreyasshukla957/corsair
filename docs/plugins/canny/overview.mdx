@@ -1,0 +1,169 @@
+---
+title: Overview
+description: "Customer feedback platform. Manage boards, feedback posts, comments, and votes."
+---
+
+Use **Canny** through Corsair: one client, typed API calls, local DB sync, and incoming webhooks.
+
+**What you get:**
+
+- 13 typed API operations
+- 4 synced entities (`boards`, `comments`, `posts`, `votes`) for fast `.search()` / `.list()`
+- 4 incoming webhook event types
+
+## Setup
+
+<Steps>
+
+<Step title="Install">
+<CodeGroup>
+```bash npm
+npm install corsair @corsair-dev/canny
+```
+```bash yarn
+yarn add corsair @corsair-dev/canny
+```
+```bash pnpm
+pnpm install corsair @corsair-dev/canny
+```
+```bash bun
+bun add corsair @corsair-dev/canny
+```
+</CodeGroup>
+
+</Step>
+
+<Step title="Add the plugin">
+```ts corsair.ts
+import Database from 'better-sqlite3';
+import { createCorsair } from 'corsair';
+import { canny } from '@corsair-dev/canny';
+
+export const corsair = createCorsair({
+	plugins: [
+		canny(),
+	],
+	database: new Database('corsair.db'),
+	kek: process.env.CORSAIR_KEK!,
+	multiTenancy: true,
+	hub: {
+		projectApiKey: process.env.CORSAIR_API_KEY!,
+		signingSecret: process.env.CORSAIR_SIGNING_SECRET!,
+	},
+});
+```
+
+With `multiTenancy: true`, scope calls with `corsair.withTenant(id)`. See [Quick start](/quick-start) for KEK + Hub keys, and [Multi-tenancy](/concepts/multi-tenancy) for account isolation.
+
+</Step>
+
+<Step title="Choose authentication">
+<Tabs>
+<Tab title="API Key (Recommended)">
+
+No setup required yet. When you make your first request as a tenant, Corsair prompts for the API key.
+
+```ts
+canny()
+```
+
+More: [API Key](/concepts/api-key)
+
+</Tab>
+</Tabs>
+
+</Step>
+
+<Step title="Connect a tenant">
+Mint a connect link and send the tenant to it. Hub hosts the page and delivers the result to your app — see [Connect / OAuth](/management/connect).
+
+```ts
+const { connectUrl } = await corsair.manage.connect.createLink({
+	plugin: 'canny',
+	tenantId: 'acme',
+});
+// redirect the user's browser to connectUrl
+```
+
+</Step>
+
+</Steps>
+
+## Example API calls
+
+**List boards**
+
+```ts
+const tenant = corsair.withTenant('acme');
+await tenant.canny.api.boards.list({});
+```
+
+
+**Create a post**
+
+```ts
+const tenant = corsair.withTenant('acme');
+await tenant.canny.api.posts.create({
+	authorID: '5f1a2b3c4d5e6f7a8b9c0d1e',
+	boardID: '5f1a2b3c4d5e6f7a8b9c0d1f',
+	title: 'Add dark mode',
+	details: 'It would be easier on the eyes at night.',
+});
+```
+
+
+See the full list on the [API](/plugins/canny/api) page.
+
+## Query synced data
+
+Search synced boards without hitting Canny.
+
+```ts
+const tenant = corsair.withTenant('acme');
+const rows = await tenant.canny.db.boards.search({
+	data: {},
+	limit: 50,
+});
+```
+
+Synced entities: `boards`, `comments`, `posts`, `votes`. See [Database](/plugins/canny/database) for filters and operators.
+
+## Webhooks
+
+Fires when someone creates a post on a board.
+
+```ts
+canny({
+    webhookHooks: {
+        posts: {
+            created: {
+                after: async (ctx, result) => {
+                    console.log('Canny post created:', result.data);
+                }
+            },
+        },
+    },
+})
+```
+
+Mount your framework handler once (see [Frameworks](/frameworks/next)), then point the provider at that URL. Full event list: [Webhooks](/plugins/canny/webhooks). Concepts: [Webhooks](/concepts/webhooks), [Hooks](/concepts/hooks).
+
+## What's next
+
+<CardGroup cols={2}>
+  <Card title="API reference" href="/plugins/canny/api">
+    Every `canny.api.*` operation with input and output types.
+  </Card>
+  <Card title="Database" href="/plugins/canny/database">
+    Synced entities, search filters, and operators.
+  </Card>
+  <Card title="Webhooks" href="/plugins/canny/webhooks">
+    Event paths, payloads, and `webhookHooks` examples.
+  </Card>
+  <Card title="Connect / OAuth" href="/management/connect">
+    createLink, Hub delivery, and tenant connect flows.
+  </Card>
+  <Card title="Use with agents" href="/mcp-adapters/mcp-adapters">
+    Expose this plugin's operations as MCP tools.
+  </Card>
+</CardGroup>

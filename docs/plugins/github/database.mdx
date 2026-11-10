@@ -1,9 +1,9 @@
 ---
 title: Database
-description: "Github local sync: searchable entities, `.search()` filters, and operators."
+description: "GitHub local sync: searchable entities, `.search()` filters, and operators."
 ---
 
-The Github plugin syncs data locally. Use `corsair.github.db.<entity>.search({ data, limit?, offset? })` with the filters listed per entity.
+The GitHub plugin syncs data locally. Use `corsair.github.db.<entity>.search({ data, limit?, offset? })` with the filters listed per entity.
 
 <Info>
 **New to Corsair?** See [database operations](/concepts/database), [data synchronization](/concepts/integrations), and [multi-tenancy](/concepts/multi-tenancy).
@@ -193,6 +193,7 @@ const rows = await corsair.github.db.issues.search({
 | `htmlUrl` | `string` | equals, contains, startsWith, endsWith, in |
 | `number` | `number` | equals, gt, gte, lt, lte, in |
 | `state` | `string` | equals, contains, startsWith, endsWith, in |
+| `stateReason` | `string` | equals, contains, startsWith, endsWith, in |
 | `title` | `string` | equals, contains, startsWith, endsWith, in |
 | `body` | `string` | equals, contains, startsWith, endsWith, in |
 | `locked` | `boolean` | equals |
@@ -231,6 +232,7 @@ const rows = await corsair.github.db.pullRequests.search({
 | `patchUrl` | `string` | equals, contains, startsWith, endsWith, in |
 | `issueUrl` | `string` | equals, contains, startsWith, endsWith, in |
 | `number` | `number` | equals, gt, gte, lt, lte, in |
+| `state` | `string` | equals, contains, startsWith, endsWith, in |
 | `locked` | `boolean` | equals |
 | `title` | `string` | equals, contains, startsWith, endsWith, in |
 | `body` | `string` | equals, contains, startsWith, endsWith, in |
@@ -378,6 +380,7 @@ const rows = await corsair.github.db.workflows.search({
 | `nodeId` | `string` | equals, contains, startsWith, endsWith, in |
 | `name` | `string` | equals, contains, startsWith, endsWith, in |
 | `path` | `string` | equals, contains, startsWith, endsWith, in |
+| `state` | `string` | equals, contains, startsWith, endsWith, in |
 | `url` | `string` | equals, contains, startsWith, endsWith, in |
 | `htmlUrl` | `string` | equals, contains, startsWith, endsWith, in |
 | `badgeUrl` | `string` | equals, contains, startsWith, endsWith, in |

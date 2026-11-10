@@ -2,9 +2,13 @@ import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import {
 	ASSERTION_WARN_FLOOR,
+	countTestFilesByPlugin,
 	detectPlugin,
+	PR_FILES_JQ,
+	parsePrFileRows,
 	renderScorecard,
 	runGate,
+	touchedPlugins,
 } from './gate.ts';
 import {
 	buildEscalationComment,
@@ -20,12 +24,6 @@ function gh(args: string[]): string {
 		encoding: 'utf8',
 		maxBuffer: 64 * 1024 * 1024,
 	});
-}
-
-function setOutput(key: string, value: string): void {
-	if (process.env.GITHUB_OUTPUT) {
-		fs.appendFileSync(process.env.GITHUB_OUTPUT, `${key}=${value}\n`);
-	}
 }
 
 const event = JSON.parse(
@@ -70,16 +68,23 @@ const pr = event.pull_request.number as number;
 const reviewId = event.review.id as number;
 const author = event.pull_request.user.login as string;
 
-setOutput('pr_number', String(event.pull_request.number));
-setOutput('head_repo', event.pull_request.head.repo.full_name);
-setOutput('head_ref', event.pull_request.head.ref);
-
-const changedFiles = gh([
+const { changedFiles, addedFiles } = parsePrFileRows(
+	gh([
+		'api',
+		`repos/${repo}/pulls/${pr}/files`,
+		'--paginate',
+		'--jq',
+		PR_FILES_JQ,
+	]),
+);
+// Read live, as in the gate job, so a team multi-plugin PR gets the same
+// verdict here as in the required check.
+const labels = gh([
 	'api',
-	`repos/${repo}/pulls/${pr}/files`,
+	`repos/${repo}/issues/${pr}/labels`,
 	'--paginate',
 	'--jq',
-	'.[].filename',
+	'.[].name',
 ])
 	.trim()
 	.split('\n')
@@ -107,24 +112,27 @@ const plugin = detectPlugin(changedFiles);
 
 // Test existence comes from the head tree (update PRs need not touch
 // tests); assertion depth only inspects changed test files — the gate job
-// (full checkout) is authoritative for depth.
-let testFileCount = 0;
-if (plugin) {
+// (full checkout) is authoritative for depth. One recursive tree call
+// counts tests for every touched plugin (team multi-plugin PRs need all).
+let testFileCounts: Record<string, number> = {};
+const touched = touchedPlugins(changedFiles);
+if (touched.length > 0) {
 	try {
-		// Recursive tree so nested tests (e.g. tests/) count, matching the
-		// gate job's recursive disk scan.
-		testFileCount = Number(
-			gh([
-				'api',
-				`repos/${headRepo}/git/trees/${headSha}?recursive=1`,
-				'--jq',
-				`[.tree[] | select(.path | startswith("packages/${plugin}/") and endswith(".test.ts"))] | length`,
-			]).trim(),
-		);
+		const testPaths = gh([
+			'api',
+			`repos/${headRepo}/git/trees/${headSha}?recursive=1`,
+			'--jq',
+			'.tree[] | select(.path | startswith("packages/") and endswith(".test.ts")) | .path',
+		])
+			.trim()
+			.split('\n')
+			.filter(Boolean);
+		testFileCounts = countTestFilesByPlugin(testPaths, touched);
 	} catch {
-		testFileCount = 0;
+		testFileCounts = {};
 	}
 }
+const testFileCount = plugin ? (testFileCounts[plugin] ?? 0) : 0;
 let assertionCount = testFileCount > 0 ? ASSERTION_WARN_FLOOR : 0;
 for (const f of changedFiles) {
 	if (plugin && f.startsWith(`packages/${plugin}/`) && f.endsWith('.test.ts')) {
@@ -142,10 +150,13 @@ const gate = runGate({
 	isDraft: event.pull_request.draft as boolean,
 	testFileCount,
 	assertionCount,
+	labels,
+	authorAssociation: event.pull_request.author_association as string,
+	addedFiles,
+	testFileCounts,
 });
 if (!gate.isPluginPr) {
 	console.log('Not a plugin PR (or draft) — loop skipped.');
-	setOutput('decision', 'skip');
 	process.exit(0);
 }
 
@@ -173,15 +184,15 @@ const round = currentRound(issueComments);
 let decision = decide(round, findings);
 const seriousCount = findings.filter((f) => f.severity !== 'P2').length;
 
-// Cost guard: never spend an LLM run while the PR itself is incomplete
-// (missing tests/description/video). Stay at round 1 until the gate passes;
-// the loop re-fires on the contributor's next push.
-const fixDeferred = decision === 'fix' && gate.failures.length > 0;
-if (fixDeferred) {
+// Never flag a maintainer while the PR itself is incomplete
+// (missing tests/description/video). Keep the round-1 findings comment fresh
+// and stay put; the loop re-fires on the contributor's next push.
+const escalateDeferred = decision === 'escalate' && gate.failures.length > 0;
+if (escalateDeferred) {
 	console.log(
-		`Fix round deferred — gate still failing (${gate.failures.map((f) => f.rule).join(', ')}).`,
+		`Escalation deferred — gate still failing (${gate.failures.map((f) => f.rule).join(', ')}).`,
 	);
-	decision = 'done';
+	decision = 'comment';
 }
 
 function post(body: string): void {
@@ -253,25 +264,12 @@ switch (decision) {
 		upsert(R1_MARKER, buildRoundOneComment(findings, gate.failures, author));
 		label('bot:round-1');
 		break;
-	case 'fix':
-		// The workflow's fix job consumes this artifact. The round=2 marker
-		// (the once-per-PR LLM ratchet) is posted by the fix job right
-		// before the agent runs, so infra failures don't burn the round.
-		fs.writeFileSync(
-			'/tmp/findings.json',
-			JSON.stringify(findings.filter((f) => f.severity !== 'P2')),
-		);
-		break;
 	case 'escalate':
 		upsert(R3_MARKER, buildEscalationComment(findings));
 		label('needs-maintainer');
 		break;
 	case 'done':
-		if (fixDeferred) {
-			// PR incomplete — keep the round-1 findings list current so the
-			// contributor always sees the latest state in one place.
-			upsert(R1_MARKER, buildRoundOneComment(findings, gate.failures, author));
-		} else if (round >= 3 && seriousCount > 0) {
+		if (round >= 3 && seriousCount > 0) {
 			// Escalated but still moving — refresh the escalation summary
 			// in place; never post new comments after escalation.
 			upsert(R3_MARKER, buildEscalationComment(findings));
@@ -284,7 +282,6 @@ switch (decision) {
 		}
 		break;
 }
-setOutput('decision', decision);
 console.log(
 	`round=${round} decision=${decision} findings=${findings.length} dryRun=${dryRun}`,
 );

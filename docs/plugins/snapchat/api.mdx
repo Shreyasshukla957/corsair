@@ -1,0 +1,3469 @@
+---
+title: API
+description: "API reference for Snapchat: every `snapchat.api.*` operation with input and output types."
+---
+
+Every `snapchat.api.*` operation is listed below with parameter shapes and return types from the plugin Zod schemas.
+
+<Info>
+**New to Corsair?** See [API access](/concepts/api), [authentication](/concepts/auth), and [error handling](/concepts/error-handling).
+</Info>
+
+## Actions
+
+### addSegmentUsers
+
+`actions.addSegmentUsers`
+
+Add Segment Users
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.addSegmentUsers({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `users` | `string[] \| string` | Yes | User identifiers (SHA-256 hashed email, phone, or mobile ad ID) |
+| `segment_id` | `string` | Yes | Unique identifier for segment_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### copyMedia
+
+`actions.copyMedia`
+
+Copy Media
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.copyMedia({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `media_copy` | `string \| Record<string, any> \| any[]` | Yes | Parameter media_copy |
+| `destination_ad_account_id` | `string` | Yes | Unique identifier for destination_ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### createAccountRole
+
+`actions.createAccountRole`
+
+Create Account Role
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.createAccountRole({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `roles` | `string \| Record<string, any> \| any[]` | Yes | Parameter roles |
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### createAdAccount
+
+`actions.createAdAccount`
+
+Create Ad Account
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.createAdAccount({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `adaccounts` | `string \| Record<string, any> \| any[]` | Yes | Parameter adaccounts |
+| `organization_id` | `string` | Yes | Unique identifier for organization_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### createAdaccountsAudienceSizeV2
+
+`actions.createAdaccountsAudienceSizeV2`
+
+Create Adaccounts Audience Size V2
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.createAdaccountsAudienceSizeV2({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `targeting` | `Record<string, any> \| string` | Yes | Targeting or delivery specification for targeting |
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### createAdaccountsCreativeElements
+
+`actions.createAdaccountsCreativeElements`
+
+Create Adaccounts Creative Elements
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.createAdaccountsCreativeElements({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `id` | `string` | Yes | Unique identifier for id |
+| `creative_elements` | `string \| Record<string, any> \| any[]` | Yes | Parameter creative_elements |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### createAdaccountsDynamicTemplates
+
+`actions.createAdaccountsDynamicTemplates`
+
+Create Adaccounts Dynamic Templates
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.createAdaccountsDynamicTemplates({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `adaccount_id` | `string` | Yes | Unique identifier for adaccount_id |
+| `dynamic_templates` | `string \| Record<string, any> \| any[]` | Yes | Parameter dynamic_templates |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### createAdaccountsEventDetails
+
+`actions.createAdaccountsEventDetails`
+
+Create Adaccounts Event Details
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.createAdaccountsEventDetails({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+| `event_details` | `string \| Record<string, any> \| any[]` | Yes | Parameter event_details |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### createAdaccountsInteractionZones
+
+`actions.createAdaccountsInteractionZones`
+
+Create Adaccounts Interaction Zones
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.createAdaccountsInteractionZones({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+| `interaction_zones` | `string \| Record<string, any> \| any[]` | Yes | Parameter interaction_zones |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### createAdaccountsOfferDisclaimers
+
+`actions.createAdaccountsOfferDisclaimers`
+
+Create Adaccounts Offer Disclaimers
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.createAdaccountsOfferDisclaimers({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `id` | `string` | Yes | Unique identifier for id |
+| `offer_disclaimers` | `string \| Record<string, any> \| any[]` | Yes | Parameter offer_disclaimers |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### createAdaccountsReservedForecasting
+
+`actions.createAdaccountsReservedForecasting`
+
+Create Adaccounts Reserved Forecasting
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.createAdaccountsReservedForecasting({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `id` | `string` | Yes | Unique identifier for id |
+| `end_time` | `string \| Date` | Yes | Timestamp for end_time |
+| `targeting` | `Record<string, any> \| string` | Yes | Targeting or delivery specification for targeting |
+| `start_time` | `string \| Date` | Yes | Timestamp for start_time |
+| `placement_v2` | `Record<string, any> \| string` | Yes | Targeting or delivery specification for placement_v2 |
+| `optimization_goal` | `string \| Record<string, any> \| any[]` | Yes | Parameter optimization_goal |
+| `delivery_constraint` | `Record<string, any> \| string` | Yes | Targeting or delivery specification for delivery_constraint |
+| `cap_and_exclusion_config` | `Record<string, any> \| string` | Yes | Targeting or delivery specification for cap_and_exclusion_config |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### createAdaccountsTargetingInsights
+
+`actions.createAdaccountsTargetingInsights`
+
+Create Adaccounts Targeting Insights
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.createAdaccountsTargetingInsights({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `id` | `string` | Yes | Unique identifier for id |
+| `base_spec` | `Record<string, any> \| string` | Yes | Targeting or delivery specification for base_spec |
+| `targeting_spec` | `Record<string, any> \| string` | Yes | Targeting or delivery specification for targeting_spec |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### createAdSquad
+
+`actions.createAdSquad`
+
+Create Ad Squad
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.createAdSquad({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `adsquads` | `string \| Record<string, any> \| any[]` | Yes | Parameter adsquads |
+| `campaign_id` | `string` | Yes | Unique identifier for campaign_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### createBillingCenter
+
+`actions.createBillingCenter`
+
+Create Billing Center
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.createBillingCenter({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `billingcenters` | `string \| Record<string, any> \| any[]` | Yes | Parameter billingcenters |
+| `organization_id` | `string` | Yes | Unique identifier for organization_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### createCampaign
+
+`actions.createCampaign`
+
+Create Campaign
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.createCampaign({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `name` | `string` | Yes | Value for name |
+| `start_time` | `string \| Date` | Yes | Timestamp for start_time |
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### createCatalogRole
+
+`actions.createCatalogRole`
+
+Create Catalog Role
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.createCatalogRole({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `roles` | `string \| Record<string, any> \| any[]` | Yes | Parameter roles |
+| `catalog_id` | `string` | Yes | Unique identifier for catalog_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### createCatalogsFacets
+
+`actions.createCatalogsFacets`
+
+Create Catalogs Facets
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.createCatalogsFacets({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `facets` | `string \| Record<string, any> \| any[]` | Yes | Parameter facets |
+| `catalog_id` | `string` | Yes | Unique identifier for catalog_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### createCatalogsFlightsSearch
+
+`actions.createCatalogsFlightsSearch`
+
+Create Catalogs Flights Search
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.createCatalogsFlightsSearch({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `catalog_id` | `string` | Yes | Unique identifier for catalog_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### createCatalogsProductFeeds
+
+`actions.createCatalogsProductFeeds`
+
+Create Catalogs Product Feeds
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.createCatalogsProductFeeds({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `name` | `string` | Yes | Value for name |
+| `catalog_id` | `string` | Yes | Unique identifier for catalog_id |
+| `default_currency` | `string` | Yes | Value for default_currency |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### createCatalogsProductSets
+
+`actions.createCatalogsProductSets`
+
+Create Catalogs Product Sets
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.createCatalogsProductSets({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `name` | `string` | Yes | Value for name |
+| `catalog_id` | `string` | Yes | Unique identifier for catalog_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### createMedia
+
+`actions.createMedia`
+
+Create Media
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.createMedia({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `media` | `string \| Record<string, any> \| any[]` | Yes | Parameter media |
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### createOrganizationsCatalogs
+
+`actions.createOrganizationsCatalogs`
+
+Create Organizations Catalogs
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.createOrganizationsCatalogs({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `catalogs` | `string \| Record<string, any> \| any[]` | Yes | Parameter catalogs |
+| `organization_id` | `string` | Yes | Unique identifier for organization_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### createOrgRole
+
+`actions.createOrgRole`
+
+Create Org Role
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.createOrgRole({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `roles` | `string \| Record<string, any> \| any[]` | Yes | Parameter roles |
+| `organization_id` | `string` | Yes | Unique identifier for organization_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### createSegment
+
+`actions.createSegment`
+
+Create Segment
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.createSegment({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `segments` | `string \| Record<string, any> \| any[]` | Yes | Parameter segments |
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### deleteAdaccountsOfferDisclaimers
+
+`actions.deleteAdaccountsOfferDisclaimers`
+
+Delete Adaccounts Offer Disclaimers
+
+**Risk:** `destructive`
+
+```ts
+await corsair.snapchat.api.actions.deleteAdaccountsOfferDisclaimers({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+| `offer_disclaimer_id` | `string` | Yes | Unique identifier for offer_disclaimer_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### deleteAdsquads
+
+`actions.deleteAdsquads`
+
+Delete Adsquads
+
+**Risk:** `destructive`
+
+```ts
+await corsair.snapchat.api.actions.deleteAdsquads({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `id` | `string` | Yes | Unique identifier for id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### deleteAllSegmentUsers
+
+`actions.deleteAllSegmentUsers`
+
+Delete All Segment Users
+
+**Risk:** `destructive`
+
+```ts
+await corsair.snapchat.api.actions.deleteAllSegmentUsers({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `segment_id` | `string` | Yes | Unique identifier for segment_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### deleteCampaign
+
+`actions.deleteCampaign`
+
+Delete Campaign
+
+**Risk:** `destructive`
+
+```ts
+await corsair.snapchat.api.actions.deleteCampaign({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `campaign_id` | `string` | Yes | Unique identifier for campaign_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### deleteCatalogs
+
+`actions.deleteCatalogs`
+
+Delete Catalogs
+
+**Risk:** `destructive`
+
+```ts
+await corsair.snapchat.api.actions.deleteCatalogs({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `catalog_id` | `string` | Yes | Unique identifier for catalog_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### deleteEventDetails
+
+`actions.deleteEventDetails`
+
+Delete Event Details
+
+**Risk:** `destructive`
+
+```ts
+await corsair.snapchat.api.actions.deleteEventDetails({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `event_details_id` | `string` | Yes | Unique identifier for event_details_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### deleteMember
+
+`actions.deleteMember`
+
+Delete Member
+
+**Risk:** `destructive`
+
+```ts
+await corsair.snapchat.api.actions.deleteMember({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `member_id` | `string` | Yes | Unique identifier for member_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### deleteProductFeeds
+
+`actions.deleteProductFeeds`
+
+Delete Product Feeds
+
+**Risk:** `destructive`
+
+```ts
+await corsair.snapchat.api.actions.deleteProductFeeds({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `product_feed_id` | `string` | Yes | Unique identifier for product_feed_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### deleteRole
+
+`actions.deleteRole`
+
+Delete Role
+
+**Risk:** `destructive`
+
+```ts
+await corsair.snapchat.api.actions.deleteRole({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `role_id` | `string` | Yes | Unique identifier for role_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### deleteSegment
+
+`actions.deleteSegment`
+
+Delete Segment
+
+**Risk:** `destructive`
+
+```ts
+await corsair.snapchat.api.actions.deleteSegment({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `segment_id` | `string` | Yes | Unique identifier for segment_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### deleteSegmentUsers
+
+`actions.deleteSegmentUsers`
+
+Delete Segment Users
+
+**Risk:** `destructive`
+
+```ts
+await corsair.snapchat.api.actions.deleteSegmentUsers({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `users` | `string[] \| string` | Yes | User identifiers (SHA-256 hashed email, phone, or mobile ad ID) |
+| `segment_id` | `string` | Yes | Unique identifier for segment_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getAdAccount
+
+`actions.getAdAccount`
+
+Get Ad Account
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getAdAccount({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getAdaccountsAdsquads
+
+`actions.getAdaccountsAdsquads`
+
+Get Adaccounts Adsquads
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getAdaccountsAdsquads({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getAdaccountsAdSquadUiRenderData
+
+`actions.getAdaccountsAdSquadUiRenderData`
+
+Get Adaccounts Ad Squad Ui Render Data
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getAdaccountsAdSquadUiRenderData({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getAdaccountsDynamicTemplates
+
+`actions.getAdaccountsDynamicTemplates`
+
+Get Adaccounts Dynamic Templates
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getAdaccountsDynamicTemplates({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getAdaccountsEventDetails
+
+`actions.getAdaccountsEventDetails`
+
+Get Adaccounts Event Details
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getAdaccountsEventDetails({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getAdaccountsInteractionZones
+
+`actions.getAdaccountsInteractionZones`
+
+Get Adaccounts Interaction Zones
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getAdaccountsInteractionZones({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getAdAccountsLeadGenerationForms
+
+`actions.getAdAccountsLeadGenerationForms`
+
+Get Ad Accounts Lead Generation Forms
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getAdAccountsLeadGenerationForms({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getAdaccountsLeadsReport
+
+`actions.getAdaccountsLeadsReport`
+
+Get Adaccounts Leads Report
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getAdaccountsLeadsReport({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `id` | `string` | Yes | Unique identifier for id |
+| `report_run_id` | `string` | Yes | Unique identifier for report_run_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getAdaccountsMobileApps
+
+`actions.getAdaccountsMobileApps`
+
+Get Adaccounts Mobile Apps
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getAdaccountsMobileApps({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getAdaccountsOfferDisclaimers
+
+`actions.getAdaccountsOfferDisclaimers`
+
+Get Adaccounts Offer Disclaimers
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getAdaccountsOfferDisclaimers({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getAdaccountsSpendGuidance
+
+`actions.getAdaccountsSpendGuidance`
+
+Get Adaccounts Spend Guidance
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getAdaccountsSpendGuidance({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getAdAccountsStats
+
+`actions.getAdAccountsStats`
+
+Get Ad Accounts Stats
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getAdAccountsStats({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getAdaccountsStatsReport
+
+`actions.getAdaccountsStatsReport`
+
+Get Adaccounts Stats Report
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getAdaccountsStatsReport({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+| `report_run_id` | `string` | Yes | Unique identifier for report_run_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getAdSquad
+
+`actions.getAdSquad`
+
+Get Ad Squad
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getAdSquad({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_squad_id` | `string` | Yes | Unique identifier for ad_squad_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getAdSquadRestrictions
+
+`actions.getAdSquadRestrictions`
+
+Get Ad Squad Restrictions
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getAdSquadRestrictions({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_squad_id` | `string` | Yes | Unique identifier for ad_squad_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getAdsquadsAudienceSizeV2
+
+`actions.getAdsquadsAudienceSizeV2`
+
+Get Adsquads Audience Size V2
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getAdsquadsAudienceSizeV2({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_squad_id` | `string` | Yes | Unique identifier for ad_squad_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getAdsquadsStatsReport
+
+`actions.getAdsquadsStatsReport`
+
+Get Adsquads Stats Report
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getAdsquadsStatsReport({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_squad_id` | `string` | Yes | Unique identifier for ad_squad_id |
+| `report_run_id` | `string` | Yes | Unique identifier for report_run_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getAdSquadStats
+
+`actions.getAdSquadStats`
+
+Get Ad Squad Stats
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getAdSquadStats({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_squad_id` | `string` | Yes | Unique identifier for ad_squad_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getAdSquadTargeting
+
+`actions.getAdSquadTargeting`
+
+Get Ad Squad Targeting
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getAdSquadTargeting({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_squad_id` | `string` | Yes | Unique identifier for ad_squad_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getAdStats
+
+`actions.getAdStats`
+
+Get Ad Stats
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getAdStats({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_id` | `string` | Yes | Unique identifier for ad_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getAuthenticatedUser
+
+`actions.getAuthenticatedUser`
+
+Get Authenticated User
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getAuthenticatedUser({});
+```
+
+**Input:** _empty object_
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getBillingCenter
+
+`actions.getBillingCenter`
+
+Get Billing Center
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getBillingCenter({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `billing_center_id` | `string` | Yes | Unique identifier for billing_center_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getCampaign
+
+`actions.getCampaign`
+
+Get Campaign
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getCampaign({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `campaign_id` | `string` | Yes | Unique identifier for campaign_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getCampaignChangelog
+
+`actions.getCampaignChangelog`
+
+Get Campaign Changelog
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getCampaignChangelog({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `campaign_id` | `string` | Yes | Unique identifier for campaign_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getCampaignsByIds
+
+`actions.getCampaignsByIds`
+
+Get Campaigns By Ids
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getCampaignsByIds({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `entity_ids` | `string[] \| string` | Yes | List of entity identifiers or single identifier |
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getCampaignStats
+
+`actions.getCampaignStats`
+
+Get Campaign Stats
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getCampaignStats({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `campaign_id` | `string` | Yes | Unique identifier for campaign_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getCatalogs
+
+`actions.getCatalogs`
+
+Get Catalogs
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getCatalogs({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `catalog_id` | `string` | Yes | Unique identifier for catalog_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getCatalogsProductSets
+
+`actions.getCatalogsProductSets`
+
+Get Catalogs Product Sets
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getCatalogsProductSets({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `catalog_id` | `string` | Yes | Unique identifier for catalog_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getDynamicTemplate
+
+`actions.getDynamicTemplate`
+
+Get Dynamic Template
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getDynamicTemplate({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `id` | `string` | Yes | Unique identifier for id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getDynamicTemplatesExternalChangelogs
+
+`actions.getDynamicTemplatesExternalChangelogs`
+
+Get Dynamic Templates External Changelogs
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getDynamicTemplatesExternalChangelogs({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `dynamic_template_id` | `string` | Yes | Unique identifier for dynamic_template_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getEventDetails
+
+`actions.getEventDetails`
+
+Get Event Details
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getEventDetails({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `event_details_id` | `string` | Yes | Unique identifier for event_details_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getFundingSource
+
+`actions.getFundingSource`
+
+Get Funding Source
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getFundingSource({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `funding_source_id` | `string` | Yes | Unique identifier for funding_source_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getInteractionZone
+
+`actions.getInteractionZone`
+
+Get Interaction Zone
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getInteractionZone({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `interaction_zone_id` | `string` | Yes | Unique identifier for interaction_zone_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getInvoice
+
+`actions.getInvoice`
+
+Get Invoice
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getInvoice({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `invoice_id` | `string` | Yes | Unique identifier for invoice_id |
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getMedia
+
+`actions.getMedia`
+
+Get Media
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getMedia({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `media_id` | `string` | Yes | Unique identifier for media_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getMediaByIds
+
+`actions.getMediaByIds`
+
+Get Media By Ids
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getMediaByIds({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `entity_ids` | `string[] \| string` | Yes | List of entity identifiers or single identifier |
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getMediaStats
+
+`actions.getMediaStats`
+
+Get Media Stats
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getMediaStats({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `media_id` | `string` | Yes | Unique identifier for media_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getMember
+
+`actions.getMember`
+
+Get Member
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getMember({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `member_id` | `string` | Yes | Unique identifier for member_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getOrganization
+
+`actions.getOrganization`
+
+Get Organization
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getOrganization({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `organization_id` | `string` | Yes | Unique identifier for organization_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getOrganizationsCatalogs
+
+`actions.getOrganizationsCatalogs`
+
+Get Organizations Catalogs
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getOrganizationsCatalogs({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `organization_id` | `string` | Yes | Unique identifier for organization_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getOrganizationsMobileApps
+
+`actions.getOrganizationsMobileApps`
+
+Get Organizations Mobile Apps
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getOrganizationsMobileApps({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `organization_id` | `string` | Yes | Unique identifier for organization_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getOrganizationsPublicProfiles
+
+`actions.getOrganizationsPublicProfiles`
+
+Get Organizations Public Profiles
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getOrganizationsPublicProfiles({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `organization_id` | `string` | Yes | Unique identifier for organization_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getPixels
+
+`actions.getPixels`
+
+Get Pixels
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getPixels({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getProductFeeds
+
+`actions.getProductFeeds`
+
+Get Product Feeds
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getProductFeeds({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `product_feed_id` | `string` | Yes | Unique identifier for product_feed_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getProductFeedsFeedUploads
+
+`actions.getProductFeedsFeedUploads`
+
+Get Product Feeds Feed Uploads
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getProductFeedsFeedUploads({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `product_feed_id` | `string` | Yes | Unique identifier for product_feed_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getProductSets
+
+`actions.getProductSets`
+
+Get Product Sets
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getProductSets({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `id` | `string` | Yes | Unique identifier for id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getSegment
+
+`actions.getSegment`
+
+Get Segment
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getSegment({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `segment_id` | `string` | Yes | Unique identifier for segment_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingCarriers
+
+`actions.getTargetingCarriers`
+
+Get Targeting Carriers
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingCarriers({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `country_code` | `string` | Yes | Value for country_code |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingConnectionTypes
+
+`actions.getTargetingConnectionTypes`
+
+Get Targeting Connection Types
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingConnectionTypes({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `country_code` | `string` | Yes | Value for country_code |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingDemographicsAdvancedDemographics
+
+`actions.getTargetingDemographicsAdvancedDemographics`
+
+Get Targeting Demographics Advanced Demographics
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingDemographicsAdvancedDemographics({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `country_code` | `string` | Yes | Value for country_code |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingDemographicsAgeGroup
+
+`actions.getTargetingDemographicsAgeGroup`
+
+Get Targeting Demographics Age Group
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingDemographicsAgeGroup({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `country_code` | `string` | Yes | Value for country_code |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingDemographicsGender
+
+`actions.getTargetingDemographicsGender`
+
+Get Targeting Demographics Gender
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingDemographicsGender({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `country_code` | `string` | Yes | Value for country_code |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingDemographicsLanguages
+
+`actions.getTargetingDemographicsLanguages`
+
+Get Targeting Demographics Languages
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingDemographicsLanguages({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `country_code` | `string` | Yes | Value for country_code |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingDeviceIosOsVersion
+
+`actions.getTargetingDeviceIosOsVersion`
+
+Get Targeting Device Ios Os Version
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingDeviceIosOsVersion({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `country_code` | `string` | Yes | Value for country_code |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingDeviceMarketingNames
+
+`actions.getTargetingDeviceMarketingNames`
+
+Get Targeting Device Marketing Names
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingDeviceMarketingNames({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `country_code` | `string` | Yes | Value for country_code |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingGeoPostalCode
+
+`actions.getTargetingGeoPostalCode`
+
+Get Targeting Geo Postal Code
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingGeoPostalCode({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `country_code` | `string` | Yes | Value for country_code |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingGeoRegion
+
+`actions.getTargetingGeoRegion`
+
+Get Targeting Geo Region
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingGeoRegion({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `country_code` | `string` | Yes | Value for country_code |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingGeoUsPostalCode
+
+`actions.getTargetingGeoUsPostalCode`
+
+Get Targeting Geo Us Postal Code
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingGeoUsPostalCode({});
+```
+
+**Input:** _empty object_
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingGeoUsRegion
+
+`actions.getTargetingGeoUsRegion`
+
+Get Targeting Geo Us Region
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingGeoUsRegion({});
+```
+
+**Input:** _empty object_
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingInterestsDlxc
+
+`actions.getTargetingInterestsDlxc`
+
+Get Targeting Interests Dlxc
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingInterestsDlxc({});
+```
+
+**Input:** _empty object_
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingInterestsDlxp
+
+`actions.getTargetingInterestsDlxp`
+
+Get Targeting Interests Dlxp
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingInterestsDlxp({});
+```
+
+**Input:** _empty object_
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingInterestsDlxs
+
+`actions.getTargetingInterestsDlxs`
+
+Get Targeting Interests Dlxs
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingInterestsDlxs({});
+```
+
+**Input:** _empty object_
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingInterestsNln
+
+`actions.getTargetingInterestsNln`
+
+Get Targeting Interests Nln
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingInterestsNln({});
+```
+
+**Input:** _empty object_
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingInterestsPlc
+
+`actions.getTargetingInterestsPlc`
+
+Get Targeting Interests Plc
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingInterestsPlc({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `country_code` | `string` | Yes | Value for country_code |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingLocationCategoriesLoi
+
+`actions.getTargetingLocationCategoriesLoi`
+
+Get Targeting Location Categories Loi
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingLocationCategoriesLoi({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `country_code` | `string` | Yes | Value for country_code |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingMetros
+
+`actions.getTargetingMetros`
+
+Get Targeting Metros
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingMetros({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `country_code` | `string` | Yes | Value for country_code |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingOsTypes
+
+`actions.getTargetingOsTypes`
+
+Get Targeting Os Types
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingOsTypes({});
+```
+
+**Input:** _empty object_
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingOsVersions
+
+`actions.getTargetingOsVersions`
+
+Get Targeting Os Versions
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingOsVersions({});
+```
+
+**Input:** _empty object_
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingV1InterestsScLs
+
+`actions.getTargetingV1InterestsScLs`
+
+Get Targeting V1 Interests Sc Ls
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingV1InterestsScLs({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `country_code` | `string` | Yes | Value for country_code |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingV1InterestsShp
+
+`actions.getTargetingV1InterestsShp`
+
+Get Targeting V1 Interests Shp
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingV1InterestsShp({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `country_code` | `string` | Yes | Value for country_code |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingV1InterestsVac
+
+`actions.getTargetingV1InterestsVac`
+
+Get Targeting V1 Interests Vac
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingV1InterestsVac({});
+```
+
+**Input:** _empty object_
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getTargetingV1Options
+
+`actions.getTargetingV1Options`
+
+Get Targeting V1 Options
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.getTargetingV1Options({});
+```
+
+**Input:** _empty object_
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listAccountRoles
+
+`actions.listAccountRoles`
+
+List Account Roles
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.listAccountRoles({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listAdAccounts
+
+`actions.listAdAccounts`
+
+List Ad Accounts
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.listAdAccounts({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `organization_id` | `string` | Yes | Unique identifier for organization_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listAdsByAccount
+
+`actions.listAdsByAccount`
+
+List Ads By Account
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.listAdsByAccount({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listAdsByAdSquad
+
+`actions.listAdsByAdSquad`
+
+List Ads By Ad Squad
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.listAdsByAdSquad({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_squad_id` | `string` | Yes | Unique identifier for ad_squad_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listAdsByCampaign
+
+`actions.listAdsByCampaign`
+
+List Ads By Campaign
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.listAdsByCampaign({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `campaign_id` | `string` | Yes | Unique identifier for campaign_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listAdSquads
+
+`actions.listAdSquads`
+
+List Ad Squads
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.listAdSquads({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `campaign_id` | `string` | Yes | Unique identifier for campaign_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listBillingCenters
+
+`actions.listBillingCenters`
+
+List Billing Centers
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.listBillingCenters({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `organization_id` | `string` | Yes | Unique identifier for organization_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listCampaigns
+
+`actions.listCampaigns`
+
+List Campaigns
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.listCampaigns({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listCatalogRoles
+
+`actions.listCatalogRoles`
+
+List Catalog Roles
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.listCatalogRoles({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `catalog_id` | `string` | Yes | Unique identifier for catalog_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listCreatives
+
+`actions.listCreatives`
+
+List Creatives
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.listCreatives({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listFundingSources
+
+`actions.listFundingSources`
+
+List Funding Sources
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.listFundingSources({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `organization_id` | `string` | Yes | Unique identifier for organization_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listInvoices
+
+`actions.listInvoices`
+
+List Invoices
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.listInvoices({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listMedia
+
+`actions.listMedia`
+
+List Media
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.listMedia({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listMemberRoles
+
+`actions.listMemberRoles`
+
+List Member Roles
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.listMemberRoles({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `member_id` | `string` | Yes | Unique identifier for member_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listMembers
+
+`actions.listMembers`
+
+List Members
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.listMembers({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `organization_id` | `string` | Yes | Unique identifier for organization_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listOrganizations
+
+`actions.listOrganizations`
+
+List Organizations
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.listOrganizations({});
+```
+
+**Input:** _empty object_
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listOrgPixels
+
+`actions.listOrgPixels`
+
+List Org Pixels
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.listOrgPixels({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `organization_id` | `string` | Yes | Unique identifier for organization_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listOrgRoles
+
+`actions.listOrgRoles`
+
+List Org Roles
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.listOrgRoles({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `organization_id` | `string` | Yes | Unique identifier for organization_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listPhoneNumbers
+
+`actions.listPhoneNumbers`
+
+List Phone Numbers
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.listPhoneNumbers({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listSegments
+
+`actions.listSegments`
+
+List Segments
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.listSegments({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listSponsoredContent
+
+`actions.listSponsoredContent`
+
+List Sponsored Content
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.listSponsoredContent({});
+```
+
+**Input:** _empty object_
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listTransactions
+
+`actions.listTransactions`
+
+List Transactions
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.listTransactions({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `organization_id` | `string` | Yes | Unique identifier for organization_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### searchAdsLibrarySponsoredContent
+
+`actions.searchAdsLibrarySponsoredContent`
+
+Search Ads Library Sponsored Content
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.searchAdsLibrarySponsoredContent({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `creator_name` | `string` | Yes | Value for creator_name |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### searchCatalogProducts
+
+`actions.searchCatalogProducts`
+
+Search Catalog Products
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.searchCatalogProducts({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `catalog_id` | `string` | Yes | Unique identifier for catalog_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### searchCatalogsHotels
+
+`actions.searchCatalogsHotels`
+
+Search Catalogs Hotels
+
+**Risk:** `read`
+
+```ts
+await corsair.snapchat.api.actions.searchCatalogsHotels({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `catalog_id` | `string` | Yes | Unique identifier for catalog_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### updateAdAccount
+
+`actions.updateAdAccount`
+
+Update Ad Account
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.updateAdAccount({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `adaccounts` | `string \| Record<string, any> \| any[]` | Yes | Parameter adaccounts |
+| `organization_id` | `string` | Yes | Unique identifier for organization_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### updateAdSquad
+
+`actions.updateAdSquad`
+
+Update Ad Squad
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.updateAdSquad({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `adsquads` | `string \| Record<string, any> \| any[]` | Yes | Parameter adsquads |
+| `campaign_id` | `string` | Yes | Unique identifier for campaign_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### updateBillingCenter
+
+`actions.updateBillingCenter`
+
+Update Billing Center
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.updateBillingCenter({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `billingcenters` | `string \| Record<string, any> \| any[]` | Yes | Parameter billingcenters |
+| `organization_id` | `string` | Yes | Unique identifier for organization_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### updateCampaign
+
+`actions.updateCampaign`
+
+Update Campaign
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.updateCampaign({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `campaign_id` | `string` | Yes | Unique identifier for campaign_id |
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### updateSegment
+
+`actions.updateSegment`
+
+Update Segment
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.updateSegment({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `segments` | `string \| Record<string, any> \| any[]` | Yes | Parameter segments |
+| `ad_account_id` | `string` | Yes | Unique identifier for ad_account_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### uploadMediaMultipart
+
+`actions.uploadMediaMultipart`
+
+Upload Media Multipart
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.uploadMediaMultipart({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `media_id` | `string` | Yes | Unique identifier for media_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### validateConversionEvent
+
+`actions.validateConversionEvent`
+
+Validate Conversion Event
+
+**Risk:** `write`
+
+```ts
+await corsair.snapchat.api.actions.validateConversionEvent({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `events` | `Record<string, any>[] \| Record<string, any> \| string` | Yes | Conversion events array, object, or string to validate |
+| `pixel_id` | `string` | Yes | Unique identifier for pixel_id |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+

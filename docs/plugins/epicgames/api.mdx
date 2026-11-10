@@ -1,0 +1,781 @@
+---
+title: API
+description: "API reference for Epic Games: every `epicgames.api.*` operation with input and output types."
+---
+
+Every `epicgames.api.*` operation is listed below with parameter shapes and return types from the plugin Zod schemas.
+
+<Info>
+**New to Corsair?** See [API access](/concepts/api), [authentication](/concepts/auth), and [error handling](/concepts/error-handling).
+</Info>
+
+## Islands
+
+### get
+
+`islands.get`
+
+Get metadata for a Fortnite island by code
+
+**Risk:** `read`
+
+```ts
+await corsair.epicgames.api.islands.get({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `code` | `string` | Yes | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getAvgMinutesPerPlayer
+
+`islands.getAvgMinutesPerPlayer`
+
+Get average minutes per unique player for an island
+
+**Risk:** `read`
+
+```ts
+await corsair.epicgames.api.islands.getAvgMinutesPerPlayer({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `code` | `string` | Yes | — |
+| `interval` | `day \| hour \| minute` | No | — |
+| `from` | `string` | No | — |
+| `to` | `string` | No | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getFavorites
+
+`islands.getFavorites`
+
+Get island favorites metrics for an interval
+
+**Risk:** `read`
+
+```ts
+await corsair.epicgames.api.islands.getFavorites({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `code` | `string` | Yes | — |
+| `interval` | `day \| hour \| minute` | No | — |
+| `from` | `string` | No | — |
+| `to` | `string` | No | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getMetricsByInterval
+
+`islands.getMetricsByInterval`
+
+Get island usage metrics aggregated by time interval
+
+**Risk:** `read`
+
+```ts
+await corsair.epicgames.api.islands.getMetricsByInterval({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `code` | `string` | Yes | — |
+| `interval` | `day \| hour \| minute` | No | — |
+| `from` | `string` | No | — |
+| `to` | `string` | No | — |
+| `metrics` | `averageMinutesPerPlayer \| peakCCU \| favorites \| minutesPlayed \| recommendations \| plays \| uniquePlayers \| retention \| (averageMinutesPerPlayer \| peakCCU \| favorites \| minutesPlayed \| recommendations \| plays \| uniquePlayers \| retention)[]` | No | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getMinutesPlayed
+
+`islands.getMinutesPlayed`
+
+Get total minutes played on an island for an interval
+
+**Risk:** `read`
+
+```ts
+await corsair.epicgames.api.islands.getMinutesPlayed({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `code` | `string` | Yes | — |
+| `interval` | `day \| hour \| minute` | No | — |
+| `from` | `string` | No | — |
+| `to` | `string` | No | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getPeakCcu
+
+`islands.getPeakCcu`
+
+Get peak concurrent users for an island over an interval
+
+**Risk:** `read`
+
+```ts
+await corsair.epicgames.api.islands.getPeakCcu({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `code` | `string` | Yes | — |
+| `interval` | `day \| hour \| minute` | No | — |
+| `from` | `string` | No | — |
+| `to` | `string` | No | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getPlays
+
+`islands.getPlays`
+
+Get island play/session-start counts for an interval
+
+**Risk:** `read`
+
+```ts
+await corsair.epicgames.api.islands.getPlays({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `code` | `string` | Yes | — |
+| `interval` | `day \| hour \| minute` | No | — |
+| `from` | `string` | No | — |
+| `to` | `string` | No | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getRecommendations
+
+`islands.getRecommendations`
+
+Get island recommendation counts for an interval
+
+**Risk:** `read`
+
+```ts
+await corsair.epicgames.api.islands.getRecommendations({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `code` | `string` | Yes | — |
+| `interval` | `day \| hour \| minute` | No | — |
+| `from` | `string` | No | — |
+| `to` | `string` | No | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getRetention
+
+`islands.getRetention`
+
+Get day-over-day retention metrics for an island
+
+**Risk:** `read`
+
+```ts
+await corsair.epicgames.api.islands.getRetention({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `code` | `string` | Yes | — |
+| `interval` | `day` | No | — |
+| `from` | `string` | No | — |
+| `to` | `string` | No | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getUniquePlayers
+
+`islands.getUniquePlayers`
+
+Get unique player counts for an island over an interval
+
+**Risk:** `read`
+
+```ts
+await corsair.epicgames.api.islands.getUniquePlayers({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `code` | `string` | Yes | — |
+| `interval` | `day \| hour \| minute` | No | — |
+| `from` | `string` | No | — |
+| `to` | `string` | No | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### list
+
+`islands.list`
+
+List public discoverable Fortnite Creative islands
+
+**Risk:** `read`
+
+```ts
+await corsair.epicgames.api.islands.list({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `size` | `number` | No | — |
+| `after` | `string` | No | — |
+| `before` | `string` | No | — |
+
+
+
+**Output:** `Record<string, any>[] \| object`
+
+<AccordionGroup>
+<Accordion title="Output full type">
+
+```ts
+Record<string, any>[] | {
+  data?: Record<string, any>[],
+  items?: Record<string, any>[],
+  results?: Record<string, any>[],
+  islands?: Record<string, any>[],
+  links?: Record<string, any>,
+  meta?: Record<string, any>
+}
+```
+</Accordion>
+</AccordionGroup>
+
+
+---
+
+## Remote
+
+### batch
+
+`remote.batch`
+
+Batch multiple Remote Control API calls into one request
+
+**Risk:** `write`
+
+```ts
+await corsair.epicgames.api.remote.batch({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `requests` | `object[]` | Yes | — |
+
+<AccordionGroup>
+<Accordion title="requests full type">
+
+```ts
+{
+  RequestId: number,
+  URL: string,
+  Verb: PUT | POST | GET | DELETE
+}[]
+```
+</Accordion>
+</AccordionGroup>
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### callObjectFunction
+
+`remote.callObjectFunction`
+
+Call a Blueprint-callable function on a UObject
+
+**Risk:** `write`
+
+```ts
+await corsair.epicgames.api.remote.callObjectFunction({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `objectPath` | `string` | Yes | — |
+| `functionName` | `string` | Yes | — |
+| `parameters` | `Record<string, any>` | No | — |
+| `generateTransaction` | `boolean` | No | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### corsPreflight
+
+`remote.corsPreflight`
+
+CORS preflight OPTIONS against the Remote Control API
+
+**Risk:** `read`
+
+```ts
+await corsair.epicgames.api.remote.corsPreflight({});
+```
+
+**Input:** _empty object_
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### deletePresetMetadataKey
+
+`remote.deletePresetMetadataKey`
+
+Delete a metadata key from a Remote Control preset
+
+**Risk:** `write`
+
+```ts
+await corsair.epicgames.api.remote.deletePresetMetadataKey({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `presetName` | `string` | Yes | — |
+| `key` | `string` | Yes | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### describeObject
+
+`remote.describeObject`
+
+Describe a UObject by path via Remote Control
+
+**Risk:** `read`
+
+```ts
+await corsair.epicgames.api.remote.describeObject({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `objectPath` | `string` | Yes | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getObjectThumbnail
+
+`remote.getObjectThumbnail`
+
+Fetch Content Browser thumbnail for an asset path
+
+**Risk:** `read`
+
+```ts
+await corsair.epicgames.api.remote.getObjectThumbnail({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `objectPath` | `string` | Yes | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getPreset
+
+`remote.getPreset`
+
+Get a Remote Control preset by name
+
+**Risk:** `read`
+
+```ts
+await corsair.epicgames.api.remote.getPreset({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `presetName` | `string` | Yes | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getPresetMetadata
+
+`remote.getPresetMetadata`
+
+Get all metadata entries for a Remote Control preset
+
+**Risk:** `read`
+
+```ts
+await corsair.epicgames.api.remote.getPresetMetadata({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `presetName` | `string` | Yes | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getPresetMetadataKey
+
+`remote.getPresetMetadataKey`
+
+Get a single metadata key for a Remote Control preset
+
+**Risk:** `read`
+
+```ts
+await corsair.epicgames.api.remote.getPresetMetadataKey({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `presetName` | `string` | Yes | — |
+| `key` | `string` | Yes | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### getPresetProperty
+
+`remote.getPresetProperty`
+
+Read a property exposed on a Remote Control preset
+
+**Risk:** `read`
+
+```ts
+await corsair.epicgames.api.remote.getPresetProperty({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `presetName` | `string` | Yes | — |
+| `propertyName` | `string` | Yes | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### initiateSession
+
+`remote.initiateSession`
+
+Initiate an Unreal Web Remote Control session
+
+**Risk:** `write`
+
+```ts
+await corsair.epicgames.api.remote.initiateSession({});
+```
+
+**Input:** _empty object_
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### invokePresetFunction
+
+`remote.invokePresetFunction`
+
+Invoke a function exposed on a Remote Control preset
+
+**Risk:** `write`
+
+```ts
+await corsair.epicgames.api.remote.invokePresetFunction({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `presetName` | `string` | Yes | — |
+| `functionName` | `string` | Yes | — |
+| `parameters` | `Record<string, any>` | No | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### listBlueprintCallableFunctions
+
+`remote.listBlueprintCallableFunctions`
+
+List Blueprint-callable functions exposed by a UObject
+
+**Risk:** `read`
+
+```ts
+await corsair.epicgames.api.remote.listBlueprintCallableFunctions({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `objectPath` | `string` | Yes | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### putObjectProperty
+
+`remote.putObjectProperty`
+
+Read or set UObject property values via Remote Control
+
+**Risk:** `write`
+
+```ts
+await corsair.epicgames.api.remote.putObjectProperty({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `objectPath` | `string` | Yes | — |
+| `propertyName` | `string` | No | — |
+| `access` | `READ_ACCESS \| WRITE_ACCESS \| WRITE_TRANSACTION_ACCESS` | No | — |
+| `propertyValue` | `Record<string, any>` | No | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### putPresetMetadataKey
+
+`remote.putPresetMetadataKey`
+
+Create or update a metadata key on a Remote Control preset
+
+**Risk:** `write`
+
+```ts
+await corsair.epicgames.api.remote.putPresetMetadataKey({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `presetName` | `string` | Yes | — |
+| `key` | `string` | Yes | — |
+| `value` | `any` | Yes | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### updatePresetProperty
+
+`remote.updatePresetProperty`
+
+Update a property exposed on a Remote Control preset
+
+**Risk:** `write`
+
+```ts
+await corsair.epicgames.api.remote.updatePresetProperty({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `presetName` | `string` | Yes | — |
+| `propertyName` | `string` | Yes | — |
+| `value` | `any` | Yes | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+
+### waitForObjectEvent
+
+`remote.waitForObjectEvent`
+
+Wait for a UObject event (experimental; requires EnableExperimentalRoutes)
+
+**Risk:** `write`
+
+```ts
+await corsair.epicgames.api.remote.waitForObjectEvent({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `objectPath` | `string` | Yes | — |
+| `eventType` | `ObjectPropertyChanged \| PreObjectPropertyChanged` | No | — |
+| `propertyName` | `string` | No | — |
+
+
+
+**Output:** `Record<string, any>`
+
+
+---
+

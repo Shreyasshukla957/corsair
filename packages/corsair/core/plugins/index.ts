@@ -1,5 +1,8 @@
 import type { ZodTypeAny } from 'zod';
-import type { CorsairDatabaseInput } from '../../db/kysely/database';
+import type {
+	CorsairDatabaseInput,
+	CorsairDbTables,
+} from '../../db/kysely/database';
 import type { CorsairPluginSchema } from '../../db/orm';
 import type { HubConfig, HubConfigInput } from '../../hub';
 import type { AccountKeyManagerFor, PluginAuthConfig } from '../auth/types';
@@ -23,6 +26,7 @@ import type {
 	WebhookPathsOf,
 	WebhookRequest,
 	WebhookResponse,
+	WebhookTenantMatch,
 	WebhookTree,
 } from '../webhooks';
 
@@ -57,6 +61,32 @@ export type PermissionMode = 'open' | 'cautious' | 'strict' | 'readonly';
 export type PermissionPolicy = 'allow' | 'deny' | 'require_approval';
 
 /**
+ * Declared on an operation that starts work the provider finishes later (a
+ * prediction, a render, a transcription), so an agent or a routine can follow
+ * it to its end: read it back with `status.op` until `status.statusPath` reads
+ * one of `done` or `failed`. Every path and status value is the provider's own,
+ * as the plugin's output schema states it.
+ */
+export type EndpointJob = {
+	/** Dot path in this operation's result to the provider's job id, e.g. `id`. */
+	idPath: string;
+	status: {
+		/** The operation in this plugin that reads the job back, e.g. `predictions.get`. */
+		op: string;
+		/** That operation's argument that takes the job id, e.g. `predictionId`. */
+		idArg: string;
+		/** Dot path in its result to where the job stands, e.g. `status`. */
+		statusPath: string;
+		/** Values that mean the job finished. */
+		done: readonly string[];
+		/** Values that mean it ended without finishing (failed, cancelled, timed out). */
+		failed: readonly string[];
+	};
+	/** The operation in this plugin that stops the job, when the provider has one. */
+	cancel?: { op: string; idArg: string };
+};
+
+/**
  * Metadata for a single endpoint entry. Drives permission decisions and MCP tool descriptions.
  * Plugin authors populate this on the `endpointMeta` field of their plugin definition.
  */
@@ -73,6 +103,8 @@ export type EndpointMetaEntry = {
 	 * Included in the MCP tool description surfaced to the AI agent.
 	 */
 	description?: string;
+	/** Set when the operation starts a long job; see {@link EndpointJob}. */
+	job?: EndpointJob;
 };
 
 /**
@@ -379,6 +411,8 @@ type ExtractAllAuthTypes<Options> = 'authType' extends keyof Options
  *     return await ctx.keys.get_bot_token();
  *   } else if (ctx.authType === 'managed') {
  *     return await ctx.keys.get_access_token();
+ *   } else if (ctx.authType === 'managed_pricing') {
+ *     return resolveManagedPricingApiKey(ctx, { plugin: '…', cache });
  *   }
  *   return '';
  * }
@@ -400,6 +434,12 @@ export type KeyBuilderContext<
 				tenantId: string;
 				/** Hub config when createCorsair({ hub: ... }) is configured */
 				hub?: HubConfig;
+				/**
+				 * Explorer shortPath for the endpoint being invoked (e.g. `scrape.run`).
+				 * Set by the runtime on endpoint calls only; forwarded to Hub for metering.
+				 * Credit prices live in Hub — not in the OSS SDK.
+				 */
+				meteredOperationId?: string;
 			}
 		: never
 	: never;
@@ -426,6 +466,30 @@ export type CorsairKeyBuilderBase = (
 	ctx: any,
 	source: 'endpoint' | 'webhook',
 ) => string | Promise<string>;
+
+/**
+ * Result of a BYO subscribe: the routing key Hub uses to map inbound provider
+ * webhooks back to this tenant, plus the verification secret Hub stores so it
+ * can verify those webhooks (e.g. Outlook `clientState`).
+ */
+export type CorsairPluginSubscribeResult = {
+	webhookLink: WebhookTenantMatch;
+	webhookSecret?: string;
+};
+
+/**
+ * BYO-mode subscribe capability. In managed mode Hub subscribes; in BYO the app
+ * holds the token, so the plugin arms the provider subscription (Outlook
+ * `POST /subscriptions`, Gmail `users.watch`) using the account token and
+ * returns the routing link + verification secret to report to Hub. Return null
+ * to skip (e.g. missing integration credentials). `ctx` is the same account
+ * context keyBuilder receives; typed `any` here to match CorsairKeyBuilderBase's
+ * array-variance handling.
+ */
+export type CorsairPluginSubscribe = (
+	ctx: any,
+	input: { webhookUrl: string },
+) => Promise<CorsairPluginSubscribeResult | null>;
 
 /**
  * Defines a Corsair plugin with endpoints, webhooks, schema, and configuration.
@@ -484,6 +548,12 @@ export type CorsairPlugin<
 	 * webhooks can be routed to the correct tenant. Return null when unavailable.
 	 */
 	oauthWebhookTenantLinkResolver?: CorsairOAuthWebhookTenantLinkResolver;
+	/**
+	 * BYO-mode subscribe: arm the provider subscription on connect using the
+	 * account token and return the routing link + verification secret for Hub.
+	 * Absent for plugins that need no token-based subscribe (class-2 webhooks).
+	 */
+	subscribe?: CorsairPluginSubscribe;
 	/** Plugin-specific error handlers */
 	errorHandlers?: CorsairErrorHandler;
 	/**
@@ -725,14 +795,31 @@ export type CorsairPermissionsOptions = {
 export type CorsairIntegration<Plugins extends readonly CorsairPlugin[]> = {
 	/** Database connection for ORM entities (e.g. `slack.api.messages.post(...)` for API, `slack.db.messages.findByEntityId(...)` for DB) */
 	database?: CorsairDatabaseInput;
+	/**
+	 * Remap Corsair logical table names (`corsair_events`, etc.) to physical
+	 * table names in your database. Omitted keys keep the default `corsair_*` name.
+	 */
+	dbTables?: CorsairDbTables;
 	/** Array of plugin definitions to include */
 	plugins: Plugins;
 	/** If true, enables tenant-scoped access via `withTenant()` */
 	multiTenancy?: boolean;
 	/** Root-level error handlers that apply when plugin-specific handlers are not defined */
 	errorHandlers?: CorsairErrorHandler;
-	/** Key Encryption Key (KEK) for envelope encryption. Used to encrypt/decrypt Data Encryption Keys (DEK) stored in the database. */
-	kek: string;
+	/**
+	 * Key Encryption Key (KEK) for envelope encryption. Used to encrypt/decrypt
+	 * Data Encryption Keys (DEK) stored in the database. Required alongside
+	 * `database` to use integration-level `keys`; omit both to get a proxy that
+	 * throws a clear error on first access. Not used in cloud mode (`ck_cloud_`).
+	 */
+	kek?: string;
+	/**
+	 * Encrypt entity documents and event payloads with the account data key
+	 * before they are written. Defaults to false. JSON field filters and the
+	 * Postgres full-text index cannot see plaintext while this is on: the
+	 * stored document is a single ciphertext field.
+	 */
+	encryptDataAtRest?: boolean;
 	/**
 	 * Global permissions configuration — approval timeouts and sync/async blocking.
 	 * Pair with per-plugin `permissions: { mode, overrides }` on each plugin.
@@ -740,7 +827,11 @@ export type CorsairIntegration<Plugins extends readonly CorsairPlugin[]> = {
 	permissions?: CorsairPermissionsOptions;
 	/** Self-hosted connect and/or permission review configuration. Can coexist with `hub`. */
 	manual?: CorsairManualConfig;
-	/** Corsair Hub configuration for hosted OAuth connect flows. */
+	/**
+	 * Corsair Hub configuration for hosted OAuth connect flows.
+	 * Omit entirely to disable Hub. When provided, `projectApiKey` and
+	 * `signingSecret` are required and validated at init.
+	 */
 	hub?: HubConfigInput;
 } & CorsairDeprecatedApprovalConfig;
 

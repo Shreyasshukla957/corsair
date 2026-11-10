@@ -1,6 +1,6 @@
 ---
 title: API
-description: "API reference for Hacker news: every `hackernews.api.*` operation with input and output types."
+description: "API reference for Hacker News: every `hackernews.api.*` operation with input and output types."
 ---
 
 Every `hackernews.api.*` operation is listed below with parameter shapes and return types from the plugin Zod schemas.
@@ -133,8 +133,7 @@ await corsair.hackernews.api.items.getWithId({});
   created_at?: string,
   created_at_i?: number,
   options?: number[],
-  children?: {
-  }[],
+  children?: Record<string, any>[],
   children_shown?: number,
   max_depth_reached?: boolean,
   children_truncated?: boolean,

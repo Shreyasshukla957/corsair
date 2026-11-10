@@ -1,0 +1,140 @@
+---
+title: Overview
+description: "Academic search API for papers, authors, citations, references, paper recommendations, text snippets, and dataset releases."
+---
+
+Use **Semantic Scholar** through Corsair: one client, typed API calls, local DB sync.
+
+**What you get:**
+
+- 21 typed API operations
+- 10 synced entities (`author`, `authorSummary`, `autocompleteMatch`, `citation`, `dataset`, `datasetDiff`, and 4 more) for fast `.search()` / `.list()`
+
+## Setup
+
+<Steps>
+
+<Step title="Install">
+<CodeGroup>
+```bash npm
+npm install corsair @corsair-dev/semanticscholar
+```
+```bash yarn
+yarn add corsair @corsair-dev/semanticscholar
+```
+```bash pnpm
+pnpm install corsair @corsair-dev/semanticscholar
+```
+```bash bun
+bun add corsair @corsair-dev/semanticscholar
+```
+</CodeGroup>
+
+</Step>
+
+<Step title="Add the plugin">
+```ts corsair.ts
+import Database from 'better-sqlite3';
+import { createCorsair } from 'corsair';
+import { semanticscholar } from '@corsair-dev/semanticscholar';
+
+export const corsair = createCorsair({
+	plugins: [
+		semanticscholar(),
+	],
+	database: new Database('corsair.db'),
+	kek: process.env.CORSAIR_KEK!,
+	multiTenancy: true,
+	hub: {
+		projectApiKey: process.env.CORSAIR_API_KEY!,
+		signingSecret: process.env.CORSAIR_SIGNING_SECRET!,
+	},
+});
+```
+
+With `multiTenancy: true`, scope calls with `corsair.withTenant(id)`. See [Quick start](/quick-start) for KEK + Hub keys, and [Multi-tenancy](/concepts/multi-tenancy) for account isolation.
+
+</Step>
+
+<Step title="Choose authentication">
+<Tabs>
+<Tab title="API Key (Recommended)">
+
+No setup required yet. When you make your first request as a tenant, Corsair prompts for the API key.
+
+```ts
+semanticscholar()
+```
+
+More: [API Key](/concepts/api-key)
+
+</Tab>
+</Tabs>
+
+</Step>
+
+<Step title="Connect a tenant">
+Mint a connect link and send the tenant to it. Hub hosts the page and delivers the result to your app — see [Connect / OAuth](/management/connect).
+
+```ts
+const { connectUrl } = await corsair.manage.connect.createLink({
+	plugin: 'semanticscholar',
+	tenantId: 'acme',
+});
+// redirect the user's browser to connectUrl
+```
+
+</Step>
+
+</Steps>
+
+## Example API calls
+
+**Search papers**
+
+```ts
+const tenant = corsair.withTenant('acme');
+await tenant.semanticscholar.api.papers.search({ query: 'attention is all you need' });
+```
+
+
+**Search authors**
+
+```ts
+const tenant = corsair.withTenant('acme');
+await tenant.semanticscholar.api.authors.search({ query: 'Geoffrey Hinton' });
+```
+
+
+See the full list on the [API](/plugins/semanticscholar/api) page.
+
+## Query synced data
+
+This table exists, but Semantic Scholar calls don't fill it yet. This returns only rows you have written yourself.
+
+```ts
+const tenant = corsair.withTenant('acme');
+const rows = await tenant.semanticscholar.db.paper.search({
+	data: {},
+	limit: 50,
+});
+```
+
+Synced entities: `author`, `authorSummary`, `autocompleteMatch`, `citation`, `dataset`, `datasetDiff`, `datasetRelease`, `paper`, `reference`, `snippet`. See [Database](/plugins/semanticscholar/database) for filters and operators.
+
+## What's next
+
+<CardGroup cols={2}>
+  <Card title="API reference" href="/plugins/semanticscholar/api">
+    Every `semanticscholar.api.*` operation with input and output types.
+  </Card>
+  <Card title="Database" href="/plugins/semanticscholar/database">
+    Synced entities, search filters, and operators.
+  </Card>
+  <Card title="Connect / OAuth" href="/management/connect">
+    createLink, Hub delivery, and tenant connect flows.
+  </Card>
+  <Card title="Use with agents" href="/mcp-adapters/mcp-adapters">
+    Expose this plugin's operations as MCP tools.
+  </Card>
+</CardGroup>

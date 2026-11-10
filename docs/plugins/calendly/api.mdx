@@ -51,10 +51,8 @@ await corsair.calendly.api.activityLog.list({});
 {
   uri?: string,
   action: string,
-  actor: {
-  },
-  details: {
-  },
+  actor: Record<string, any>,
+  details: Record<string, any>,
   organization: string,
   occurred_at: string,
   namespace?: string
@@ -721,8 +719,7 @@ await corsair.calendly.api.eventTypes.updateAvailability({});
   uri: string,
   user: string,
   timezone: string,
-  rules?: {
-  }[]
+  rules?: Record<string, any>[]
 }
 ```
 </Accordion>
@@ -1065,7 +1062,7 @@ await corsair.calendly.api.invitees.create({});
 
 `invitees.deleteData`
 
-Delete all data for specified invitee emails [DESTRUCTIVE]
+Delete all data for specified invitee emails
 
 **Risk:** `destructive`
 
@@ -1090,7 +1087,7 @@ await corsair.calendly.api.invitees.deleteData({});
 
 `invitees.deleteNoShow`
 
-Delete an invitee no-show record [DESTRUCTIVE]
+Delete an invitee no-show record
 
 **Risk:** `destructive`
 
@@ -1387,7 +1384,7 @@ await corsair.calendly.api.invitees.markNoShow({});
 
 `organizations.deleteMembership`
 
-Delete an organization membership [DESTRUCTIVE]
+Delete an organization membership
 
 **Risk:** `destructive`
 
@@ -1755,7 +1752,7 @@ await corsair.calendly.api.organizations.listMemberships({});
 
 `organizations.removeMember`
 
-Remove a user from the organization [DESTRUCTIVE]
+Remove a user from the organization
 
 **Risk:** `destructive`
 
@@ -1780,7 +1777,7 @@ await corsair.calendly.api.organizations.removeMember({});
 
 `organizations.revokeInvitation`
 
-Revoke a user's organization invitation [DESTRUCTIVE]
+Revoke a user's organization invitation
 
 **Risk:** `destructive`
 
@@ -1876,17 +1873,7 @@ await corsair.calendly.api.routingForms.getSampleWebhookData({});
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| `body` | `object` | Yes | — |
-
-<AccordionGroup>
-<Accordion title="body full type">
-
-```ts
-{
-}
-```
-</Accordion>
-</AccordionGroup>
+| `body` | `Record<string, any>` | Yes | — |
 
 
 
@@ -1925,14 +1912,11 @@ await corsair.calendly.api.routingForms.getSubmission({});
 {
   uri: string,
   routing_form: string,
-  questions_and_answers?: {
-  }[],
-  tracking?: {
-  },
+  questions_and_answers?: Record<string, any>[],
+  tracking?: Record<string, any>,
   created_at?: string,
   updated_at?: string,
-  result?: {
-  }
+  result?: Record<string, any>
 }
 ```
 </Accordion>
@@ -2011,7 +1995,7 @@ await corsair.calendly.api.routingForms.list({});
 
 `scheduledEvents.cancel`
 
-Cancel a scheduled event [DESTRUCTIVE]
+Cancel a scheduled event
 
 **Risk:** `destructive`
 
@@ -2055,7 +2039,7 @@ await corsair.calendly.api.scheduledEvents.cancel({});
 
 `scheduledEvents.deleteData`
 
-Delete all scheduled event data in a time range [DESTRUCTIVE]
+Delete all scheduled event data in a time range
 
 **Risk:** `destructive`
 
@@ -2463,8 +2447,7 @@ await corsair.calendly.api.users.getAvailabilitySchedule({});
   name: string,
   user: string,
   timezone: string,
-  rules?: {
-  }[],
+  rules?: Record<string, any>[],
   created_at?: string,
   updated_at?: string
 }
@@ -2557,8 +2540,7 @@ await corsair.calendly.api.users.listAvailabilitySchedules({});
   name: string,
   user: string,
   timezone: string,
-  rules?: {
-  }[],
+  rules?: Record<string, any>[],
   created_at?: string,
   updated_at?: string
 }[]
@@ -2608,8 +2590,7 @@ await corsair.calendly.api.users.listBusyTimes({});
   end_time: string,
   buffered_start_time?: string,
   buffered_end_time?: string,
-  event?: string | {
-  } | null
+  event?: string | Record<string, any> | null
 }[]
 ```
 </Accordion>
@@ -2815,7 +2796,7 @@ await corsair.calendly.api.webhookSubscriptions.create({});
 
 `webhookSubscriptions.delete`
 
-Delete a webhook subscription [DESTRUCTIVE]
+Delete a webhook subscription
 
 **Risk:** `destructive`
 

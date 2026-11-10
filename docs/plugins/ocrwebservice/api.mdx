@@ -1,0 +1,147 @@
+---
+title: API
+description: "API reference for OCR Web Service: every `ocrwebservice.api.*` operation with input and output types."
+---
+
+Every `ocrwebservice.api.*` operation is listed below with parameter shapes and return types from the plugin Zod schemas.
+
+<Info>
+**New to Corsair?** See [API access](/concepts/api), [authentication](/concepts/auth), and [error handling](/concepts/error-handling).
+</Info>
+
+## Account
+
+### getCredentials
+
+`account.getCredentials`
+
+Extract the OCR Web Service username from stored credentials
+
+**Risk:** `read`
+
+```ts
+await corsair.ocrwebservice.api.account.getCredentials({});
+```
+
+**Input:** _empty object_
+
+
+**Output**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `user_name` | `string` | Yes | — |
+
+
+
+---
+
+### getInformation
+
+`account.getInformation`
+
+Retrieve remaining pages, subscription plan, and expiration date
+
+**Risk:** `read`
+
+```ts
+await corsair.ocrwebservice.api.account.getInformation({});
+```
+
+**Input:** _empty object_
+
+
+**Output**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ErrorMessage` | `string \| null` | No | — |
+| `AvailablePages` | `number \| null` | No | — |
+| `MaxPages` | `number \| null` | No | — |
+| `LastProcessingTime` | `string \| null` | No | — |
+| `SubcriptionPlan` | `string \| null` | No | — |
+| `ExpirationDate` | `string \| null` | No | — |
+
+
+
+---
+
+### log
+
+`account.log`
+
+Retrieve OCR processing logs for a date range
+
+**Risk:** `read`
+
+```ts
+await corsair.ocrwebservice.api.account.log({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `from_date` | `string` | Yes | — |
+| `to_date` | `string` | Yes | — |
+| `reserved` | `string[]` | No | — |
+
+
+
+**Output**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `data` | `string` | Yes | — |
+
+
+
+---
+
+## Ocr
+
+### recognize
+
+`ocr.recognize`
+
+OCR an image or document via REST processDocument
+
+**Risk:** `write`
+
+```ts
+await corsair.ocrwebservice.api.ocr.recognize({});
+```
+
+**Input**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `file` | `custom` | Yes | — |
+| `language` | `string` | No | Defaults to "english". |
+| `pagerange` | `string` | No | — |
+| `tobw` | `boolean` | No | — |
+| `zone` | `string` | No | — |
+| `outputformat` | `string` | No | — |
+| `gettext` | `boolean` | No | — |
+| `getwords` | `boolean` | No | — |
+| `newline` | `boolean` | No | — |
+| `description` | `string` | No | — |
+
+
+
+**Output**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ErrorMessage` | `string \| null` | No | — |
+| `AvailablePages` | `number \| null` | No | — |
+| `ProcessedPages` | `number \| null` | No | — |
+| `OCRText` | `string[][] \| null` | No | — |
+| `OutputFileUrl` | `string \| null` | No | — |
+| `TaskDescription` | `string \| null` | No | — |
+| `Reserved` | `any[] \| null` | No | — |
+
+
+
+---
+

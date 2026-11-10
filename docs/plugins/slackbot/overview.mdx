@@ -1,0 +1,164 @@
+---
+title: Overview
+description: "Slack workspace access with a bot token for messages, conversations, files, users, user groups, reminders, calls, canvases, and team info, plus Events API webhooks."
+---
+
+Use **Slack Bot** through Corsair: one client, typed API calls, local DB sync, and incoming webhooks.
+
+**What you get:**
+
+- 87 typed API operations
+- 6 synced entities (`channels`, `files`, `messages`, `reminders`, `scheduled_messages`, `users`) for fast `.search()` / `.list()`
+- 10 incoming webhook event types
+
+## Setup
+
+<Steps>
+
+<Step title="Install">
+<CodeGroup>
+```bash npm
+npm install corsair @corsair-dev/slackbot
+```
+```bash yarn
+yarn add corsair @corsair-dev/slackbot
+```
+```bash pnpm
+pnpm install corsair @corsair-dev/slackbot
+```
+```bash bun
+bun add corsair @corsair-dev/slackbot
+```
+</CodeGroup>
+
+</Step>
+
+<Step title="Add the plugin">
+```ts corsair.ts
+import Database from 'better-sqlite3';
+import { createCorsair } from 'corsair';
+import { slackbot } from '@corsair-dev/slackbot';
+
+export const corsair = createCorsair({
+	plugins: [
+		slackbot(),
+	],
+	database: new Database('corsair.db'),
+	kek: process.env.CORSAIR_KEK!,
+	multiTenancy: true,
+	hub: {
+		projectApiKey: process.env.CORSAIR_API_KEY!,
+		signingSecret: process.env.CORSAIR_SIGNING_SECRET!,
+	},
+});
+```
+
+With `multiTenancy: true`, scope calls with `corsair.withTenant(id)`. See [Quick start](/quick-start) for KEK + Hub keys, and [Multi-tenancy](/concepts/multi-tenancy) for account isolation.
+
+</Step>
+
+<Step title="Choose authentication">
+<Tabs>
+<Tab title="OAuth 2.0 (Recommended)">
+
+Open [hub.corsair.dev](https://hub.corsair.dev/dashboard), navigate to your project, and enter the **client ID** and **client secret** from your Slack Bot OAuth app.
+
+```ts
+slackbot()
+```
+
+More: [OAuth 2.0](/concepts/oauth)
+
+</Tab>
+</Tabs>
+
+</Step>
+
+<Step title="Connect a tenant">
+Mint a connect link and send the tenant to it. Hub hosts the page and delivers the result to your app — see [Connect / OAuth](/management/connect).
+
+```ts
+const { connectUrl } = await corsair.manage.connect.createLink({
+	plugin: 'slackbot',
+	tenantId: 'acme',
+});
+// redirect the user's browser to connectUrl
+```
+
+</Step>
+
+</Steps>
+
+## Example API calls
+
+**List channels**
+
+```ts
+const tenant = corsair.withTenant('acme');
+await tenant.slackbot.api.conversations.list({});
+```
+
+
+**Post a message**
+
+```ts
+const tenant = corsair.withTenant('acme');
+await tenant.slackbot.api.messages.post({ channel: 'C01234567', text: 'Hello from Corsair' });
+```
+
+
+See the full list on the [API](/plugins/slackbot/api) page.
+
+## Query synced data
+
+Search synced channels without hitting Slack's API.
+
+```ts
+const tenant = corsair.withTenant('acme');
+const rows = await tenant.slackbot.db.channels.search({
+	data: {},
+	limit: 50,
+});
+```
+
+Synced entities: `channels`, `files`, `messages`, `reminders`, `scheduled_messages`, `users`. See [Database](/plugins/slackbot/database) for filters and operators.
+
+## Webhooks
+
+Fires when someone posts in a public channel the bot can see.
+
+```ts
+slackbot({
+    webhookHooks: {
+        messages: {
+            message: {
+                after: async (ctx, result) => {
+                    console.log('Slack message:', result.data);
+                }
+            },
+        },
+    },
+})
+```
+
+Mount your framework handler once (see [Frameworks](/frameworks/next)), then point the provider at that URL. Full event list: [Webhooks](/plugins/slackbot/webhooks). Concepts: [Webhooks](/concepts/webhooks), [Hooks](/concepts/hooks).
+
+## What's next
+
+<CardGroup cols={2}>
+  <Card title="API reference" href="/plugins/slackbot/api">
+    Every `slackbot.api.*` operation with input and output types.
+  </Card>
+  <Card title="Database" href="/plugins/slackbot/database">
+    Synced entities, search filters, and operators.
+  </Card>
+  <Card title="Webhooks" href="/plugins/slackbot/webhooks">
+    Event paths, payloads, and `webhookHooks` examples.
+  </Card>
+  <Card title="Connect / OAuth" href="/management/connect">
+    createLink, Hub delivery, and tenant connect flows.
+  </Card>
+  <Card title="Use with agents" href="/mcp-adapters/mcp-adapters">
+    Expose this plugin's operations as MCP tools.
+  </Card>
+</CardGroup>
