@@ -2284,6 +2284,14 @@
                 ]
               },
               {
+                "group": "Fomo",
+                "pages": [
+                  "plugins/fomo/overview",
+                  "plugins/fomo/api",
+                  "plugins/fomo/database"
+                ]
+              },
+              {
                 "group": "Formbricks",
                 "pages": [
                   "plugins/formbricks/overview",
