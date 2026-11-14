@@ -94,7 +94,7 @@ describe('PdfApi endpoint request seams', () => {
 		expect(parsedRender.data).toBe('base64-pdf');
 	});
 
-	it('redacts nothing here but keeps the event log call shape', async () => {
+	it('redacts template data from the render event log payload', async () => {
 		const logMock = jest.requireMock('corsair/core')
 			.logEventFromContext as jest.Mock;
 		// unknown: the event-writer mock records the runtime context and
@@ -112,6 +112,8 @@ describe('PdfApi endpoint request seams', () => {
 			(c) => c[1] === 'pdfapi.templates.renderTemplate',
 		);
 		const payload = renderCalls[renderCalls.length - 1]?.[2];
-		expect(payload).toEqual({ templateId: 'tpl-1', data: { name: 'Jane' } });
+		// R8: document placeholder values are customer data and never reach the
+		// event history — only the template id and output mode are logged.
+		expect(payload).toEqual({ templateId: 'tpl-1', output: 'pdf' });
 	});
 });

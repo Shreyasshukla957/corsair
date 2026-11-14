@@ -65,7 +65,9 @@ export const renderTemplate: PdfApiEndpoints['renderTemplate'] = async (
 	await logEventFromContext(
 		ctx,
 		'pdfapi.templates.renderTemplate',
-		input,
+		// R8: document placeholder values are customer data and stay out of
+		// event history; only the template id and output mode are logged.
+		{ templateId, output: input.output ?? 'pdf' },
 		'completed',
 	);
 	return response;
@@ -85,7 +87,12 @@ export const mergeTemplates: PdfApiEndpoints['mergeTemplates'] = async (
 	await logEventFromContext(
 		ctx,
 		'pdfapi.templates.mergeTemplates',
-		input,
+		// R8: per-template document values stay out of event history; only
+		// the template ids and output mode are logged.
+		{
+			templateIds: input.templates.map((t) => t.id),
+			output: input.output ?? 'pdf',
+		},
 		'completed',
 	);
 	return response;
