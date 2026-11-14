@@ -5063,5 +5063,23 @@
     "version": "0.1.0",
     "isNew": true,
     "changes": []
+  },
+  {
+    "date": "2026-11-14",
+    "package": "@corsair-dev/langchain",
+    "dir": "adapters/langchain",
+    "name": "langchain",
+    "version": "0.1.31",
+    "isNew": false,
+    "changes": []
+  },
+  {
+    "date": "2026-11-14",
+    "package": "@corsair-dev/gatherup",
+    "dir": "packages/gatherup",
+    "name": "GatherUp",
+    "version": "0.1.0",
+    "isNew": true,
+    "changes": []
   }
 ]
