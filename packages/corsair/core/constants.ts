@@ -211,6 +211,7 @@ export const BaseProviders = [
 	'devinmcp',
 	'dialpad',
 	'diffbot',
+	'digicert',
 	'digitalocean',
 	'discord',
 	'dnsfilter',
@@ -776,6 +777,7 @@ export const ProviderDisplayNames = {
 	devinmcp: 'Devin MCP',
 	dialpad: 'Dialpad',
 	diffbot: 'Diffbot',
+	digicert: 'DigiCert',
 	digitalocean: 'DigitalOcean',
 	discord: 'Discord',
 	dnsfilter: 'DNSFilter',
@@ -1348,6 +1350,7 @@ export type AllProviders =
 	| 'devinmcp'
 	| 'dialpad'
 	| 'diffbot'
+	| 'digicert'
 	| 'digitalocean'
 	| 'discord'
 	| 'dnsfilter'
