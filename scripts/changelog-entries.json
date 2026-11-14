@@ -4829,5 +4829,23 @@
     "version": "0.1.0",
     "isNew": true,
     "changes": []
+  },
+  {
+    "date": "2026-11-14",
+    "package": "@corsair-dev/finmei",
+    "dir": "packages/finmei",
+    "name": "Finmei",
+    "version": "0.1.0",
+    "isNew": true,
+    "changes": []
+  },
+  {
+    "date": "2026-11-14",
+    "package": "@corsair-dev/folk",
+    "dir": "packages/folk",
+    "name": "Folk",
+    "version": "0.1.0",
+    "isNew": true,
+    "changes": []
   }
 ]
