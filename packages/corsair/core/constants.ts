@@ -258,6 +258,7 @@ export const BaseProviders = [
 	'finage',
 	'finerworks',
 	'finmei',
+	'fireberry',
 	'firecrawl',
 	'fireflies',
 	'fixer',
@@ -819,6 +820,7 @@ export const ProviderDisplayNames = {
 	finage: 'Finage',
 	finerworks: 'FinerWorks',
 	finmei: 'Finmei',
+	fireberry: 'Fireberry',
 	firecrawl: 'Firecrawl',
 	fireflies: 'Fireflies',
 	fixer: 'Fixer',
@@ -1387,6 +1389,7 @@ export type AllProviders =
 	| 'finage'
 	| 'finerworks'
 	| 'finmei'
+	| 'fireberry'
 	| 'firecrawl'
 	| 'fireflies'
 	| 'fixer'
