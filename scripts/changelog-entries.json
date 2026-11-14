@@ -4793,5 +4793,14 @@
     "version": "0.1.0",
     "isNew": true,
     "changes": []
+  },
+  {
+    "date": "2026-11-14",
+    "package": "@corsair-dev/e2b",
+    "dir": "packages/e2b",
+    "name": "E2B",
+    "version": "0.1.0",
+    "isNew": true,
+    "changes": []
   }
 ]
