@@ -251,6 +251,7 @@ export const BaseProviders = [
 	'fal',
 	'faraday',
 	'felt',
+	'fibery',
 	'fidel',
 	'figma',
 	'filevine',
@@ -814,6 +815,7 @@ export const ProviderDisplayNames = {
 	fal: 'fal',
 	faraday: 'Faraday',
 	felt: 'Felt',
+	fibery: 'Fibery',
 	fidel: 'Fidel',
 	figma: 'Figma',
 	filevine: 'Filevine',
@@ -1384,6 +1386,7 @@ export type AllProviders =
 	| 'fal'
 	| 'faraday'
 	| 'felt'
+	| 'fibery'
 	| 'fidel'
 	| 'figma'
 	| 'filevine'
