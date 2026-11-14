@@ -4937,5 +4937,32 @@
     "version": "0.1.0",
     "isNew": true,
     "changes": []
+  },
+  {
+    "date": "2026-11-14",
+    "package": "@corsair-dev/dialpad",
+    "dir": "packages/dialpad",
+    "name": "Dialpad",
+    "version": "0.1.0",
+    "isNew": true,
+    "changes": []
+  },
+  {
+    "date": "2026-11-14",
+    "package": "@corsair-dev/digicert",
+    "dir": "packages/digicert",
+    "name": "DigiCert",
+    "version": "0.1.0",
+    "isNew": true,
+    "changes": []
+  },
+  {
+    "date": "2026-11-14",
+    "package": "@corsair-dev/fibery",
+    "dir": "packages/fibery",
+    "name": "Fibery",
+    "version": "0.1.0",
+    "isNew": true,
+    "changes": []
   }
 ]
