@@ -4928,5 +4928,14 @@
     "version": "0.1.0",
     "isNew": true,
     "changes": []
+  },
+  {
+    "date": "2026-11-14",
+    "package": "@corsair-dev/formdesk",
+    "dir": "packages/formdesk",
+    "name": "Formdesk",
+    "version": "0.1.0",
+    "isNew": true,
+    "changes": []
   }
 ]
