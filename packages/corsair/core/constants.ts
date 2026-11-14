@@ -269,6 +269,7 @@ export const BaseProviders = [
 	'gemini',
 	'gamma',
 	'genderapi',
+	'genderapiio',
 	'genderize',
 	'giphy',
 	'github',
@@ -825,6 +826,7 @@ export const ProviderDisplayNames = {
 	gemini: 'Gemini',
 	gamma: 'Gamma',
 	genderapi: 'Gender API',
+	genderapiio: 'GenderAPI.io',
 	genderize: 'Genderize',
 	giphy: 'Giphy',
 	github: 'GitHub',
@@ -1388,6 +1390,7 @@ export type AllProviders =
 	| 'gemini'
 	| 'gamma'
 	| 'genderapi'
+	| 'genderapiio'
 	| 'genderize'
 	| 'giphy'
 	| 'github'
