@@ -4973,5 +4973,14 @@
     "version": "0.1.0",
     "isNew": true,
     "changes": []
+  },
+  {
+    "date": "2026-11-14",
+    "package": "@corsair-dev/kanbanize",
+    "dir": "packages/kanbanize",
+    "name": "Kanbanize",
+    "version": "0.1.0",
+    "isNew": true,
+    "changes": []
   }
 ]
