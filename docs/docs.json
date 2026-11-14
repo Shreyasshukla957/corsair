@@ -2126,6 +2126,14 @@
                 ]
               },
               {
+                "group": "Fathom",
+                "pages": [
+                  "plugins/fathom/overview",
+                  "plugins/fathom/api",
+                  "plugins/fathom/database"
+                ]
+              },
+              {
                 "group": "Felt",
                 "pages": [
                   "plugins/felt/overview",
