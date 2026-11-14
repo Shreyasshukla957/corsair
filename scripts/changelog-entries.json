@@ -4802,5 +4802,14 @@
     "version": "0.1.0",
     "isNew": true,
     "changes": []
+  },
+  {
+    "date": "2026-11-14",
+    "package": "@corsair-dev/genderapiio",
+    "dir": "packages/genderapiio",
+    "name": "GenderAPI.io",
+    "version": "0.1.0",
+    "isNew": true,
+    "changes": []
   }
 ]
