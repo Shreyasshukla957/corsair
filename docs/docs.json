@@ -1920,6 +1920,14 @@
                 ]
               },
               {
+                "group": "E2B",
+                "pages": [
+                  "plugins/e2b/overview",
+                  "plugins/e2b/api",
+                  "plugins/e2b/database"
+                ]
+              },
+              {
                 "group": "ElevenLabs",
                 "pages": [
                   "plugins/elevenlabs/overview",
