@@ -232,6 +232,7 @@ export const BaseProviders = [
 	'dynapictures',
 	'e2b',
 	'elevenlabs',
+	'elorus',
 	'emailoctopus',
 	'emelia',
 	'encodian',
@@ -803,6 +804,7 @@ export const ProviderDisplayNames = {
 	dynapictures: 'Dynapictures',
 	e2b: 'E2B',
 	elevenlabs: 'ElevenLabs',
+	elorus: 'Elorus',
 	emailoctopus: 'EmailOctopus',
 	emelia: 'Emelia',
 	encodian: 'Encodian',
@@ -1381,6 +1383,7 @@ export type AllProviders =
 	| 'dynapictures'
 	| 'e2b'
 	| 'elevenlabs'
+	| 'elorus'
 	| 'emailoctopus'
 	| 'emelia'
 	| 'encodian'
