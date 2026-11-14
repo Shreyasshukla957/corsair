@@ -271,6 +271,7 @@ export const BaseProviders = [
 	'genderapi',
 	'genderapiio',
 	'genderize',
+	'geoapify',
 	'giphy',
 	'github',
 	'gitlab',
@@ -828,6 +829,7 @@ export const ProviderDisplayNames = {
 	genderapi: 'Gender API',
 	genderapiio: 'GenderAPI.io',
 	genderize: 'Genderize',
+	geoapify: 'Geoapify',
 	giphy: 'Giphy',
 	github: 'GitHub',
 	gitlab: 'GitLab',
@@ -1392,6 +1394,7 @@ export type AllProviders =
 	| 'genderapi'
 	| 'genderapiio'
 	| 'genderize'
+	| 'geoapify'
 	| 'giphy'
 	| 'github'
 	| 'gitlab'
