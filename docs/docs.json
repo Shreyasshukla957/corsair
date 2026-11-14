@@ -1953,6 +1953,14 @@
                 ]
               },
               {
+                "group": "Elorus",
+                "pages": [
+                  "plugins/elorus/overview",
+                  "plugins/elorus/api",
+                  "plugins/elorus/database"
+                ]
+              },
+              {
                 "group": "EmailOctopus",
                 "pages": [
                   "plugins/emailoctopus/overview",
@@ -2118,6 +2126,14 @@
                 ]
               },
               {
+                "group": "Fathom",
+                "pages": [
+                  "plugins/fathom/overview",
+                  "plugins/fathom/api",
+                  "plugins/fathom/database"
+                ]
+              },
+              {
                 "group": "Felt",
                 "pages": [
                   "plugins/felt/overview",
@@ -2268,6 +2284,14 @@
                 ]
               },
               {
+                "group": "Fomo",
+                "pages": [
+                  "plugins/fomo/overview",
+                  "plugins/fomo/api",
+                  "plugins/fomo/database"
+                ]
+              },
+              {
                 "group": "Formbricks",
                 "pages": [
                   "plugins/formbricks/overview",
@@ -2313,6 +2337,14 @@
                   "plugins/gamma/overview",
                   "plugins/gamma/api",
                   "plugins/gamma/database"
+                ]
+              },
+              {
+                "group": "GatherUp",
+                "pages": [
+                  "plugins/gatherup/overview",
+                  "plugins/gatherup/api",
+                  "plugins/gatherup/database"
                 ]
               },
               {

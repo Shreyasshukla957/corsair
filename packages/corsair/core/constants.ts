@@ -232,6 +232,7 @@ export const BaseProviders = [
 	'dynapictures',
 	'e2b',
 	'elevenlabs',
+	'elorus',
 	'emailoctopus',
 	'emelia',
 	'encodian',
@@ -252,6 +253,7 @@ export const BaseProviders = [
 	'facebook',
 	'fal',
 	'faraday',
+	'fathom',
 	'felt',
 	'fibery',
 	'fidel',
@@ -270,6 +272,7 @@ export const BaseProviders = [
 	'fluxguard',
 	'folk',
 	'followupboss',
+	'fomo',
 	'formbricks',
 	'formdesk',
 	'foursquare',
@@ -277,6 +280,7 @@ export const BaseProviders = [
 	'gemini',
 	'gagelist',
 	'gamma',
+	'gatherup',
 	'genderapi',
 	'genderapiio',
 	'genderize',
@@ -803,6 +807,7 @@ export const ProviderDisplayNames = {
 	dynapictures: 'Dynapictures',
 	e2b: 'E2B',
 	elevenlabs: 'ElevenLabs',
+	elorus: 'Elorus',
 	emailoctopus: 'EmailOctopus',
 	emelia: 'Emelia',
 	encodian: 'Encodian',
@@ -823,6 +828,7 @@ export const ProviderDisplayNames = {
 	facebook: 'Facebook',
 	fal: 'fal',
 	faraday: 'Faraday',
+	fathom: 'Fathom',
 	felt: 'Felt',
 	fibery: 'Fibery',
 	fidel: 'Fidel',
@@ -841,6 +847,7 @@ export const ProviderDisplayNames = {
 	fluxguard: 'Fluxguard',
 	folk: 'Folk',
 	followupboss: 'Follow Up Boss',
+	fomo: 'Fomo',
 	formbricks: 'Formbricks',
 	formdesk: 'Formdesk',
 	foursquare: 'Foursquare',
@@ -848,6 +855,7 @@ export const ProviderDisplayNames = {
 	gemini: 'Gemini',
 	gagelist: 'Gagelist',
 	gamma: 'Gamma',
+	gatherup: 'GatherUp',
 	genderapi: 'Gender API',
 	genderapiio: 'GenderAPI.io',
 	genderize: 'Genderize',
@@ -1381,6 +1389,7 @@ export type AllProviders =
 	| 'dynapictures'
 	| 'e2b'
 	| 'elevenlabs'
+	| 'elorus'
 	| 'emailoctopus'
 	| 'emelia'
 	| 'encodian'
@@ -1401,6 +1410,7 @@ export type AllProviders =
 	| 'facebook'
 	| 'fal'
 	| 'faraday'
+	| 'fathom'
 	| 'felt'
 	| 'fibery'
 	| 'fidel'
@@ -1419,6 +1429,7 @@ export type AllProviders =
 	| 'fluxguard'
 	| 'folk'
 	| 'followupboss'
+	| 'fomo'
 	| 'formbricks'
 	| 'formdesk'
 	| 'foursquare'
@@ -1426,6 +1437,7 @@ export type AllProviders =
 	| 'gemini'
 	| 'gagelist'
 	| 'gamma'
+	| 'gatherup'
 	| 'genderapi'
 	| 'genderapiio'
 	| 'genderize'
