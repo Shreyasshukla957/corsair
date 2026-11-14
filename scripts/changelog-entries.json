@@ -4811,5 +4811,23 @@
     "version": "0.1.0",
     "isNew": true,
     "changes": []
+  },
+  {
+    "date": "2026-11-14",
+    "package": "@corsair-dev/felt",
+    "dir": "packages/felt",
+    "name": "Felt",
+    "version": "0.1.0",
+    "isNew": true,
+    "changes": []
+  },
+  {
+    "date": "2026-11-14",
+    "package": "@corsair-dev/geoapify",
+    "dir": "packages/geoapify",
+    "name": "Geoapify",
+    "version": "0.1.0",
+    "isNew": true,
+    "changes": []
   }
 ]
