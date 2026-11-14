@@ -257,6 +257,7 @@ export const BaseProviders = [
 	'filloutforms',
 	'finage',
 	'finerworks',
+	'finmei',
 	'firecrawl',
 	'fireflies',
 	'fixer',
@@ -816,6 +817,7 @@ export const ProviderDisplayNames = {
 	filloutforms: 'FilloutForms',
 	finage: 'Finage',
 	finerworks: 'FinerWorks',
+	finmei: 'Finmei',
 	firecrawl: 'Firecrawl',
 	fireflies: 'Fireflies',
 	fixer: 'Fixer',
@@ -1382,6 +1384,7 @@ export type AllProviders =
 	| 'filloutforms'
 	| 'finage'
 	| 'finerworks'
+	| 'finmei'
 	| 'firecrawl'
 	| 'fireflies'
 	| 'fixer'
