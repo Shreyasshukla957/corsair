@@ -1,6 +1,6 @@
 import type { ApiRequestOptions, ApiResult } from 'corsair/http';
 import { ApiError, request } from 'corsair/http';
-import { makePdfApiRequest, PdfApiError } from './client';
+import { makePdfApiRequest } from './client';
 import { errorHandlers } from './error-handlers';
 
 jest.mock('corsair/http', () => {
@@ -34,7 +34,7 @@ describe('PdfApi client', () => {
 		);
 		await expect(
 			makePdfApiRequest({ key: 'secret' }, '/templates', { method: 'GET' }),
-		).rejects.toThrow(PdfApiError);
+		).rejects.toThrow(ApiError);
 		expect(requestMock).toHaveBeenCalledTimes(1);
 		// enabled stays true so the shared transport reads the Retry-After
 		// headers and attaches them to the thrown error; maxRetries 0 keeps
@@ -48,7 +48,7 @@ describe('PdfApi client', () => {
 		});
 	});
 
-	it('preserves status and Retry-After metadata on wrapped rate limits', async () => {
+	it('preserves status and Retry-After metadata on rate limits', async () => {
 		requestMock.mockRejectedValue(
 			new ApiError(apiRequest, rateLimitResult, 'Too Many Requests', {
 				retryAfter: 30000,
@@ -57,9 +57,11 @@ describe('PdfApi client', () => {
 		const error = await makePdfApiRequest({ key: 'secret' }, '/templates', {
 			method: 'GET',
 		}).catch((caught: unknown) => caught); // unknown: the rejection value is opaque; narrowed by the assertions below
-		expect(error).toBeInstanceOf(PdfApiError);
-		expect((error as PdfApiError).status).toBe(429);
-		expect((error as PdfApiError).retryAfter).toBe(30000);
+		// The original ApiError passes through so callers keep the full error
+		// (body, request details, status, Retry-After) — not a wrapper class.
+		expect(error).toBeInstanceOf(ApiError);
+		expect((error as ApiError).status).toBe(429);
+		expect((error as ApiError).retryAfter).toBe(30000);
 	});
 
 	it('sends the provider Bearer header without a scheme rewrite', async () => {
@@ -87,9 +89,9 @@ describe('PdfApi client', () => {
 		const error = await makePdfApiRequest({ key: 'secret' }, '/templates', {
 			method: 'GET',
 		}).catch((caught: unknown) => caught); // unknown: the rejection value is opaque; narrowed by the assertions below
-		expect(error).toBeInstanceOf(PdfApiError);
-		expect((error as PdfApiError).status).toBe(400);
-		expect((error as PdfApiError).message).toBe(
+		expect(error).toBeInstanceOf(ApiError);
+		expect((error as ApiError).status).toBe(400);
+		expect((error as ApiError).message).toBe(
 			'Template placeholders do not match data keys',
 		);
 	});

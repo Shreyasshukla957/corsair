@@ -94,21 +94,21 @@ export async function makePdfApiRequest<T>(
 		});
 	} catch (error) {
 		if (error instanceof ApiError) {
-			// PDF-API.io failures explain themselves in the body; the shared
-			// transport message loses that provider text.
-			// unknown: the provider error body is documented only loosely, so
-			// the shape is read structurally.
+			// R8: the original ApiError passes through unchanged so callers and
+			// custom handlers keep the full error (body, request details,
+			// status, Retry-After); only the message is enriched with the
+			// provider text from the body, read structurally because the
+			// provider error shape is documented only loosely.
+			// unknown: the provider error body shape is documented only
+			// loosely, so it is read structurally.
 			const provider = error.body as
 				| { message?: string; error?: string }
 				| undefined;
-			throw new PdfApiError(
-				provider?.message || provider?.error || error.message,
-				error.status,
-				error.retryAfter,
-			);
+			error.message = provider?.message || provider?.error || error.message;
+			throw error;
 		}
 		if (error instanceof Error) {
-			throw new PdfApiError(error.message);
+			throw error;
 		}
 		throw new PdfApiError('Unknown PDF-API.io error');
 	}
