@@ -2300,6 +2300,14 @@
                 ]
               },
               {
+                "group": "GageList",
+                "pages": [
+                  "plugins/gagelist/overview",
+                  "plugins/gagelist/api",
+                  "plugins/gagelist/database"
+                ]
+              },
+              {
                 "group": "Gamma",
                 "pages": [
                   "plugins/gamma/overview",
