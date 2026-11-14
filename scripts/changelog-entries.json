@@ -5081,5 +5081,14 @@
     "version": "0.1.0",
     "isNew": true,
     "changes": []
+  },
+  {
+    "date": "2026-11-14",
+    "package": "@corsair-dev/elorus",
+    "dir": "packages/elorus",
+    "name": "Elorus",
+    "version": "0.1.0",
+    "isNew": true,
+    "changes": []
   }
 ]
