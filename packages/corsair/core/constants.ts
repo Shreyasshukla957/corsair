@@ -331,6 +331,7 @@ export const BaseProviders = [
 	'kadoa',
 	'kaggle',
 	'kanbanize',
+	'keen',
 	'keenable',
 	'keyword',
 	'kibana',
@@ -899,6 +900,7 @@ export const ProviderDisplayNames = {
 	kadoa: 'Kadoa',
 	kaggle: 'Kaggle',
 	kanbanize: 'Kanbanize',
+	keen: 'Keen',
 	keenable: 'Keenable',
 	keyword: 'Keyword',
 	kibana: 'Kibana',
@@ -1474,6 +1476,7 @@ export type AllProviders =
 	| 'kadoa'
 	| 'kaggle'
 	| 'kanbanize'
+	| 'keen'
 	| 'keenable'
 	| 'keyword'
 	| 'kibana'
