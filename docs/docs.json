@@ -1945,6 +1945,14 @@
                 ]
               },
               {
+                "group": "Encodian",
+                "pages": [
+                  "plugins/encodian/overview",
+                  "plugins/encodian/api",
+                  "plugins/encodian/database"
+                ]
+              },
+              {
                 "group": "Endorsal",
                 "pages": [
                   "plugins/endorsal/overview",
